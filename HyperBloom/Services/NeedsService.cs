@@ -13,5 +13,5 @@ public class NeedsService : INeedsService
     }
 
 
-    public Dictionary<string, HashSet<Needs>> GetNeedTypes() => _needsRepository.GetNeedTypes();
+    public HashSet<Needs> GetNeedTypes() => _needsRepository.GetNeedTypes();
 }

@@ -1,67 +1,40 @@
 using HyperBloom.Models.Entities;
+using Type = HyperBloom.Models.Entities.Type;
 
 namespace HyperBloom.Repositories;
 
 public class NeedsRepository : INeedsRepository<Needs>
 {
-    private HashSet<LightType> _lightTypes = new();
-    private HashSet<WaterType> _waterTypes = new();
-    private HashSet<SoilType> _soilTypes = new();
-    private Dictionary<string, HashSet<Needs>> _needs = new();
+    private HashSet<Needs> _needs = new();
 
     public NeedsRepository()
     {
-        SeedLightTypes();
-        SeedSoilTypes();
-        SeedWaterTypes();
         SeedNeeds();
     }
 
     private void SeedNeeds()
     {
-        _needs = new Dictionary<string, HashSet<Needs>>()
-        {
-            { "light", new HashSet<Needs>(_lightTypes) },
-            { "soil", new HashSet<Needs>(_soilTypes) },
-            { "water", new HashSet<Needs>(_waterTypes) }
-        };
-    }
-    
-    private void SeedLightTypes()
-    {
-        _lightTypes = new HashSet<LightType>()
-        {
-            new LightType("High light"),
-            new LightType("Partial light"),
-            new LightType("Low light")
-        };
-    }
-    private void SeedSoilTypes()
-    {
-        _soilTypes = new HashSet<SoilType>()
-        {
-            new SoilType("Sandy soil"),
-            new SoilType("Clay soil"),
-            new SoilType("Silt soil"),
-            new SoilType("Peat soil"),
-            new SoilType("Chalk soil"),
-            new SoilType("Loam soil")
-        };
-    }
-    private void SeedWaterTypes()
-    {
-        _waterTypes = new HashSet<WaterType>()
-        {
-            new WaterType("Aquatic"),
-            new WaterType("High"),
-            new WaterType("Moderate"),
-            new WaterType("Low"),
-            new WaterType("Very low")
+        _needs = new HashSet<Needs>()
+        { 
+            new Needs(1,"High light", Type.Light),
+            new Needs(2,"Partial light", Type.Light),
+            new Needs(3, "Low light", Type.Light),
+            new Needs(4, "Sandy soil", Type.Soil),
+            new Needs(5, "Clay soil", Type.Soil),
+            new Needs(6, "Silt soil", Type.Soil),
+            new Needs(7, "Peat soil", Type.Soil),
+            new Needs(8, "Chalk soil", Type.Soil),
+            new Needs(9, "Loam soil", Type.Soil),
+            new Needs(10,"Aquatic", Type.Water),
+            new Needs(11,"High", Type.Water),
+            new Needs(12,"Moderate", Type.Water),
+            new Needs(13,"Low", Type.Water),
+            new Needs(14,"Very low", Type.Water),
         };
     }
 
-    public Dictionary<string, HashSet<Needs>> GetNeedTypes()
+    public HashSet<Needs> GetNeedTypes()
     {
-        return new Dictionary<string, HashSet<Needs>>(_needs);
+        return new HashSet<Needs>(_needs);
     }
 }
