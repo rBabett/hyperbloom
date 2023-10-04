@@ -20,17 +20,18 @@ public class PlantService : IPlantService
         return await _context.Plants.ToListAsync().ConfigureAwait(true);
     }
 
-    public async Task AddNewPlant(Plant plant)
+    public async Task<int> AddNewPlant(Plant plant)
     {
         var transaction = await _context.Database.BeginTransactionAsync();
         _context.Plants.Add(plant);
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
+        return plant.Id;
     }
 
     public async Task<Plant?> GetPlantById(int id)
     {
-        if (String.IsNullOrEmpty(id.ToString()))
+        if (string.IsNullOrEmpty(id.ToString()))
         {
             return null;
         }
@@ -43,12 +44,14 @@ public class PlantService : IPlantService
         return plant;
     }
 
-    public async Task DeletePlantById(int id)
+    public async Task<bool> DeletePlantById(int id)
     {
         var plantToDelete = _context.Plants.FirstOrDefault(plant => plant.Id.Equals(id));
-        if (plantToDelete == null) return;
+        if (plantToDelete == null) return false;
         _context.Plants.Remove(plantToDelete);
         await _context.SaveChangesAsync().ConfigureAwait(true);
+
+        return _context.Plants.FirstOrDefault(plant => plant.Id == plantToDelete.Id) == null;
     }
 
     public async Task UpdatePlant(int id, Plant updatedPlant)
