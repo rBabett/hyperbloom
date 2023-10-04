@@ -17,16 +17,9 @@ public class Plant
     
     [Required][MaxLength(8)]
     public string Abbreviation { get; set; }
-    [ForeignKey("LightType")]
     public string LightNeeds { get; set; }
-    public LightType LightType { get; set; }
-    [ForeignKey("WaterType")]
     public string WaterNeeds { get; set; }
-    public WaterType WaterType { get; set; }
-    [ForeignKey("SoilType")]
     public string SoilNeeds { get; set; }
-    public SoilType SoilType { get; set; }
-
     public Plant(string name, string lightNeeds, string waterNeeds, string soilNeeds, string abbreviation)
     {
         Name = name;
