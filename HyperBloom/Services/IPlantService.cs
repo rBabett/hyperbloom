@@ -5,8 +5,8 @@ namespace HyperBloom.Services;
 public interface IPlantService
 {
     Task<List<Plant>> GetPlants();
-    Task AddNewPlant(Plant plant);
+    Task<int> AddNewPlant(Plant plant);
     Task<Plant?> GetPlantById(int id);
-    Task DeletePlantById(int id);
+    Task<bool> DeletePlantById(int id);
     Task UpdatePlant(int id, Plant updatedPlant);
 }

@@ -4,5 +4,5 @@ namespace HyperBloom.Repositories;
 
 public interface INeedsRepository<T>
 {
-    Dictionary<string, HashSet<Needs>> GetNeedTypes();
+    HashSet<Needs> GetNeedTypes();
 }

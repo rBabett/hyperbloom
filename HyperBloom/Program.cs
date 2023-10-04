@@ -25,6 +25,7 @@ builder.Services.AddDbContext<GardenAppContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<INeedsRepository<Needs>, NeedsRepository>();
 builder.Services.AddTransient<INeedsService, NeedsService>();
+builder.Services.AddTransient<IPlantService, PlantService>();
 
 
 builder.Services.AddHttpLogging(httpLogging =>
