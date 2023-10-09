@@ -7,7 +7,6 @@
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="plants.length">
   <thead>
     <tr>
-      <th>Id</th>
       <th>Name</th>
       <th>Abbreviation</th>
       <th>Light Needs</th>
@@ -17,7 +16,6 @@
   </thead>
   <tbody>
     <tr *ngFor="let plant of plants">
-      <td>{{ plant.id }}</td>
       <td>{{ plant.name }}</td>
       <td>{{ plant.abbreviation }}</td>
       <td>{{ plant.lightNeeds }}</td>
