@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { MyPlantsComponent } from './my-plants/my-plants.component';
+import { AddNewPlantComponent } from "./add-new-plant/add-new-plant.component";
 
 @NgModule({
   declarations: [
@@ -16,17 +17,20 @@ import { MyPlantsComponent } from './my-plants/my-plants.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    MyPlantsComponent
+    MyPlantsComponent,
+    AddNewPlantComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'my-plants', component: MyPlantsComponent },
-    ])
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path: 'counter', component: CounterComponent},
+      {path: 'my-plants', component: MyPlantsComponent},
+      {path: 'add-new-plant', component: AddNewPlantComponent},
+    ]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

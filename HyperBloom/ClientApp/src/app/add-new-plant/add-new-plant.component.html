@@ -1,0 +1,57 @@
+<h1>Add New Plant</h1>
+
+<form [formGroup]="newPlantForm"
+(ngSubmit)="onSubmint()">
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input placeholder="You plant's name" id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="abbreviation">
+      Abbreviation
+    </label>
+    <input placeholder="An emoji or letter" id="abbreviation" type="text" formControlName="abbreviation">
+  </div>
+
+  <div>
+    <label for="lightNeeds">
+      Light Needs
+    </label>
+    <select id="lightNeeds" formControlName="lightNeeds">
+      <option hidden="hidden" value="">Choose your plant's light needs</option>
+      <option *ngFor="let lightneed of lightNeeds" [ngValue]="lightneed.name
+">
+        {{lightneed.name}}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="waterNeeds">
+      Water Needs
+    </label>
+    <select id="waterNeeds" formControlName="waterNeeds">
+      <option hidden="hidden" value="">Choose your plant's water needs</option>
+      <option *ngFor="let waterneed of waterNeeds" [ngValue]="waterneed.name">
+        {{waterneed.name}}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="soilNeeds">
+      Soil Needs
+    </label>
+    <select id="soilNeeds" formControlName="soilNeeds">
+      <option hidden="hidden" value="">Choose your plant's soil needs</option>
+      <option *ngFor="let soilneed of soilNeeds" [ngValue]="soilneed.name
+">
+        {{soilneed.name}}
+      </option>
+    </select>
+  </div>
+  <button class="button" type="submit">Add Plant</button>
+</form>
