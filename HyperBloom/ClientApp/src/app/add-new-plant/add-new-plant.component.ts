@@ -39,7 +39,7 @@ export class AddNewPlantComponent {
     this.router = Router;
   }
 
-  onSubmint(): void {
+  onSubmit(): void {
     console.log(this.newPlantForm);
 
     const formData = {
@@ -49,8 +49,6 @@ export class AddNewPlantComponent {
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
     };
-
-    //this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', this.newPlantForm)
 
     this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe({
       error: error => {
