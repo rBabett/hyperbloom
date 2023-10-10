@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { MyPlantsComponent } from './my-plants/my-plants.component';
 import { AddNewPlantComponent } from "./add-new-plant/add-new-plant.component";
+import { UpdatePlantComponent } from "./update-plant/update-plant.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddNewPlantComponent } from "./add-new-plant/add-new-plant.component";
     HomeComponent,
     CounterComponent,
     MyPlantsComponent,
-    AddNewPlantComponent
+    AddNewPlantComponent,
+    UpdatePlantComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -28,6 +30,7 @@ import { AddNewPlantComponent } from "./add-new-plant/add-new-plant.component";
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'counter', component: CounterComponent},
       {path: 'my-plants', component: MyPlantsComponent},
+      {path: 'my-plants/:id', component: UpdatePlantComponent},
       {path: 'add-new-plant', component: AddNewPlantComponent},
     ]),
     ReactiveFormsModule

@@ -2,16 +2,25 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
+import { ActivatedRoute, ParamMap } from '@angular/router'
 
 @Component({
-  selector: 'app-add-new-plant',
-  templateUrl: './add-new-plant.component.html'
+  selector: 'app-update-plant',
+  templateUrl: './update-plant.component.html'
 })
-export class AddNewPlantComponent {
+export class UpdatePlantComponent {
   public needs: Needs[] = [];
   public soilNeeds: Needs[] = [];
   public waterNeeds: Needs[] = [];
   public lightNeeds: Needs[] = [];
+
+  public id: number;
+  public plant: Plant | undefined;
+  public name: string | undefined;
+  public abbreviation: string | undefined;
+  public plantLight: string | undefined;
+  public plantWater: string | undefined;
+  public plantSoil: string | undefined;
 
   private http: HttpClient;
   private baseUrl: string;
@@ -27,19 +36,30 @@ export class AddNewPlantComponent {
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private formBuilder: FormBuilder,
-              private Router: Router) {
+              private Router: Router,
+              private route: ActivatedRoute) {
     http.get<Needs[]>(baseUrl + 'api/needs').subscribe(result => {
       this.needs = result;
       this.soilNeeds = this.needs.filter(need => need.type == 0);
       this.waterNeeds = this.needs.filter(need => need.type == 1);
       this.lightNeeds = this.needs.filter(need => need.type == 2);
     }, error => console.error(error));
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.id = id;
+    http.get<Plant>(baseUrl + 'api/plants/' + id).subscribe(result => {
+      this.plant = result;
+      this.name = result.name;
+      this.abbreviation = result.abbreviation;
+      this.plantLight = result.lightNeeds;
+      this.plantSoil = result.soilNeeds;
+      this.plantWater = result.waterNeeds;
+    }, error => console.error(error));
     this.http = http;
     this.baseUrl = baseUrl;
     this.router = Router;
   }
 
-  onSubmit(): void {
+  onSubmit(id: number): void {
     console.log(this.newPlantForm);
 
     const formData = {
@@ -50,14 +70,14 @@ export class AddNewPlantComponent {
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
     };
 
-    this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe({
+    this.http.put<Plant>(this.baseUrl + 'api/plants/' + id, formData).subscribe({
       error: error => {
         console.error('There was an error!', error);
       }
     })
+
     setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
   }
-
 }
 
 interface Needs {

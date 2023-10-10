@@ -12,6 +12,7 @@
       <th>Light Needs</th>
       <th>Water Needs</th>
       <th>Soil Needs</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,12 @@
       <td>{{ plant.lightNeeds }}</td>
       <td>{{ plant.waterNeeds }}</td>
       <td>{{ plant.soilNeeds }}</td>
+      <td>
+        <button (click)="UpdatePlant(plant.id)">Update</button>
+      </td>
+      <td>
+        <button (click)="DeletePlant(plant.id)">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>
