@@ -76,7 +76,7 @@ export class UpdatePlantComponent {
       }
     })
 
-    this.router.navigate(['/my-plants']);
+    setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
   }
 }
 

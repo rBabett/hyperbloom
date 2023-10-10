@@ -55,8 +55,7 @@ export class AddNewPlantComponent {
         console.error('There was an error!', error);
       }
     })
-
-    this.router.navigate(['/my-plants']);
+    setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
   }
 
 }
