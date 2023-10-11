@@ -26,7 +26,7 @@ export class MyPlantsComponent implements OnInit {
 
   private GetPlant() {
     this.plantService.getPlants().subscribe(res =>
-    this.plants = res);
+    this.plants = res.sort((a, b) => a.id.toString().localeCompare(b.id.toString())));
   }
   public DeletePlant(id: number) {
     this.plantService.deletePlant(id);
