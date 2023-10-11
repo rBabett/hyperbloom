@@ -21,7 +21,6 @@ export class AddNewPlantComponent {
 
   newPlantForm = this.formBuilder.group({
     name: '',
-    abbreviation: '',
     lightNeeds: '',
     waterNeeds: '',
     soilNeeds: '',
@@ -46,7 +45,6 @@ export class AddNewPlantComponent {
 
     const formData = {
       Name: this.newPlantForm.get('name')?.value,
-      Abbreviation: this.newPlantForm.get('abbreviation')?.value,
       LightNeeds: this.newPlantForm.get('lightNeeds')?.value,
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value

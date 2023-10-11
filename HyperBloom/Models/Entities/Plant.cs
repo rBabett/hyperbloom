@@ -12,20 +12,18 @@ public class Plant
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; }
     
-    [Required][MaxLength(30),MinLength(5)]
+    [Required]
     public string Name { get; set; }
-    
-    [Required][MaxLength(8)]
-    public string Abbreviation { get; set; }
     public string LightNeeds { get; set; }
     public string WaterNeeds { get; set; }
     public string SoilNeeds { get; set; }
-    public Plant(string name, string lightNeeds, string waterNeeds, string soilNeeds, string abbreviation)
+    public DateTime WateredDate { get; set; }
+    public DateTime FertilizedDate { get; set; }
+    public Plant(string name, string lightNeeds, string waterNeeds, string soilNeeds)
     {
         Name = name;
         LightNeeds = lightNeeds;
         WaterNeeds = waterNeeds;
         SoilNeeds = soilNeeds;
-        Abbreviation = abbreviation;
     }
 }

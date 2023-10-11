@@ -41,7 +41,6 @@ export class PlantService {
   }
 
   updatePlant(id: number, formData: {
-    Abbreviation: string | null | undefined;
     WaterNeeds: string | null | undefined;
     SoilNeeds: string | null | undefined;
     LightNeeds: string | null | undefined;

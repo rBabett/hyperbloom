@@ -8,7 +8,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Abbreviation</th>
       <th>Light Needs</th>
       <th>Water Needs</th>
       <th>Soil Needs</th>
@@ -16,23 +15,18 @@
       <th>Last fertilized</th>
       <th></th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let plant of plants">
       <td>{{ plant.name }}</td>
-      <td>{{ plant.abbreviation }}</td>
       <td>{{ plant.lightNeeds }}</td>
       <td>{{ plant.waterNeeds }}</td>
       <td>{{ plant.soilNeeds }}</td>
-      <td>Last watered date</td>
-      <td>Last fertilized date</td>
-      <td>
-        <button>Water</button>
-        <button>Fertilize</button>
-      </td>
+      <td>Last watered date
+        <button>Water</button></td>
+      <td>Last fertilized date
+        <button>Fertilize</button></td>
       <td>
         <button (click)="UpdatePlant(plant.id)">Update</button>
       </td>

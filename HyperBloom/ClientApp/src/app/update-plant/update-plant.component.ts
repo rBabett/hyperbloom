@@ -20,7 +20,6 @@ export class UpdatePlantComponent {
   public id: number;
   public plant: Plant | undefined;
   public name: string | undefined;
-  public abbreviation: string | undefined;
   public plantLight: string | undefined;
   public plantWater: string | undefined;
   public plantSoil: string | undefined;
@@ -31,7 +30,6 @@ export class UpdatePlantComponent {
 
   newPlantForm = this.formBuilder.group({
     name: '',
-    abbreviation: '',
     lightNeeds: '',
     waterNeeds: '',
     soilNeeds: '',
@@ -55,7 +53,6 @@ export class UpdatePlantComponent {
     this.plantservice.getPlantById(id).subscribe(result => {
       this.plant = result;
       this.name = result.name;
-      this.abbreviation = result.abbreviation;
       this.plantLight = result.lightNeeds;
       this.plantSoil = result.soilNeeds;
       this.plantWater = result.waterNeeds;
@@ -71,7 +68,6 @@ export class UpdatePlantComponent {
 
     const formData = {
       Name: this.newPlantForm.get('name')?.value,
-      Abbreviation: this.newPlantForm.get('abbreviation')?.value,
       LightNeeds: this.newPlantForm.get('lightNeeds')?.value,
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
