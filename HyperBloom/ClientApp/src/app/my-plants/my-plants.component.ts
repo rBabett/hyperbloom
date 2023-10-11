@@ -60,6 +60,7 @@ export interface Plant {
   soilNeeds: string;
   wateredDate: Date;
   fertilizedDate: Date;
+  color: string;
 }
 
 export interface Needs {

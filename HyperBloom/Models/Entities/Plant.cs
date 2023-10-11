@@ -19,11 +19,13 @@ public class Plant
     public string SoilNeeds { get; set; }
     public DateTime WateredDate { get; set; }
     public DateTime FertilizedDate { get; set; }
-    public Plant(string name, string lightNeeds, string waterNeeds, string soilNeeds)
+    public string Color { get; set; }
+    public Plant(string name, string lightNeeds, string waterNeeds, string soilNeeds, string color)
     {
         Name = name;
         LightNeeds = lightNeeds;
         WaterNeeds = waterNeeds;
         SoilNeeds = soilNeeds;
+        Color = color;
     }
 }

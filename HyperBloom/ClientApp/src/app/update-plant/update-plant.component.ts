@@ -23,6 +23,7 @@ export class UpdatePlantComponent {
   public plantLight: string | undefined;
   public plantWater: string | undefined;
   public plantSoil: string | undefined;
+  public color: string | undefined;
 
   private http: HttpClient;
   private baseUrl: string;
@@ -33,6 +34,7 @@ export class UpdatePlantComponent {
     lightNeeds: '',
     waterNeeds: '',
     soilNeeds: '',
+    color: '',
   });
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
@@ -56,6 +58,7 @@ export class UpdatePlantComponent {
       this.plantLight = result.lightNeeds;
       this.plantSoil = result.soilNeeds;
       this.plantWater = result.waterNeeds;
+      this.color = result.color;
     }, error => console.error(error));
 
     this.http = http;
@@ -70,7 +73,8 @@ export class UpdatePlantComponent {
       Name: this.newPlantForm.get('name')?.value,
       LightNeeds: this.newPlantForm.get('lightNeeds')?.value,
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
-      SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
+      SoilNeeds: this.newPlantForm.get('soilNeeds')?.value,
+      Color: this.newPlantForm.get('color')?.value,
     };
     this.plantservice.updatePlant(id, formData);
   }

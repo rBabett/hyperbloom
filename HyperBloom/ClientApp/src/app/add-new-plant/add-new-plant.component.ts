@@ -24,6 +24,7 @@ export class AddNewPlantComponent {
     lightNeeds: '',
     waterNeeds: '',
     soilNeeds: '',
+    color: '',
   });
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
@@ -47,7 +48,8 @@ export class AddNewPlantComponent {
       Name: this.newPlantForm.get('name')?.value,
       LightNeeds: this.newPlantForm.get('lightNeeds')?.value,
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
-      SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
+      SoilNeeds: this.newPlantForm.get('soilNeeds')?.value,
+      Color: this.newPlantForm.get('color')?.value,
     };
 
     this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe({
