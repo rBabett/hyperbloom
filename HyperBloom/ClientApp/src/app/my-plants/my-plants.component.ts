@@ -1,26 +1,33 @@
-import { Component, Inject } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {getBaseUrl} from "../../main";
 import {Router} from "@angular/router";
+import { PlantService } from "../plant.service";
 
 @Component({
   selector: 'app-my-plants',
   templateUrl: './my-plants.component.html'
 })
-export class MyPlantsComponent {
+export class MyPlantsComponent implements OnInit {
   public plants: Plant[] = [];
   private http: HttpClient;
   private router: Router;
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
-              private Router: Router) {
-    http.get<Plant[]>(baseUrl + 'api/plants').subscribe(result => {
-      this.plants = result;
-    }, error => console.error(error));
+              private Router: Router,
+              private plantService: PlantService) {
     this.http = http;
     this.router = Router;
   }
 
+  ngOnInit() {
+    this.GetPlant();
+  }
+
+  private GetPlant() {
+    this.plantService.getPlants().subscribe(res =>
+    this.plants = res);
+  }
   public DeletePlant(id: number) {
     this.http.delete(getBaseUrl() + 'api/plants/' + id).subscribe({
       error: error => {
@@ -52,7 +59,7 @@ export class MyPlantsComponent {
   }
 }
 
-interface Plant {
+export interface Plant {
   id: number;
   name: string;
   abbreviation: string;
