@@ -61,3 +61,8 @@ export interface Plant {
   wateredDate: Date;
   fertilizedDate: Date;
 }
+
+export interface Needs {
+  name: string;
+  type: number;
+}

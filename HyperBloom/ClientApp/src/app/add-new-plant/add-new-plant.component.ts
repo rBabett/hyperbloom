@@ -2,6 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
+import { Plant } from "../my-plants/my-plants.component";
+import { Needs } from "../my-plants/my-plants.component";
 
 @Component({
   selector: 'app-add-new-plant',
@@ -60,15 +62,3 @@ export class AddNewPlantComponent {
 
 }
 
-interface Needs {
-  name: string;
-  type: number;
-}
-
-interface Plant {
-  name: string;
-  abbreviation: string;
-  lightNeeds: string;
-  waterNeeds: string;
-  soilNeeds: string;
-}

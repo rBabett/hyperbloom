@@ -3,6 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
 import { ActivatedRoute, ParamMap } from '@angular/router'
+import {PlantService} from "../plant.service";
+import { Plant } from "../my-plants/my-plants.component";
+import { Needs } from "../my-plants/my-plants.component";
 
 @Component({
   selector: 'app-update-plant',
@@ -37,8 +40,10 @@ export class UpdatePlantComponent {
               @Inject('BASE_URL') baseUrl: string,
               private formBuilder: FormBuilder,
               private Router: Router,
-              private route: ActivatedRoute) {
-    http.get<Needs[]>(baseUrl + 'api/needs').subscribe(result => {
+              private route: ActivatedRoute,
+              private plantservice: PlantService) {
+
+    this.plantservice.getNeeds().subscribe(result => {
       this.needs = result;
       this.soilNeeds = this.needs.filter(need => need.type == 0);
       this.waterNeeds = this.needs.filter(need => need.type == 1);
@@ -46,7 +51,8 @@ export class UpdatePlantComponent {
     }, error => console.error(error));
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.id = id;
-    http.get<Plant>(baseUrl + 'api/plants/' + id).subscribe(result => {
+
+    this.plantservice.getPlantById(id).subscribe(result => {
       this.plant = result;
       this.name = result.name;
       this.abbreviation = result.abbreviation;
@@ -54,6 +60,7 @@ export class UpdatePlantComponent {
       this.plantSoil = result.soilNeeds;
       this.plantWater = result.waterNeeds;
     }, error => console.error(error));
+
     this.http = http;
     this.baseUrl = baseUrl;
     this.router = Router;
@@ -69,26 +76,6 @@ export class UpdatePlantComponent {
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
     };
-
-    this.http.put<Plant>(this.baseUrl + 'api/plants/' + id, formData).subscribe({
-      error: error => {
-        console.error('There was an error!', error);
-      }
-    })
-
-    setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
+    this.plantservice.updatePlant(id, formData);
   }
-}
-
-interface Needs {
-  name: string;
-  type: number;
-}
-
-interface Plant {
-  name: string;
-  abbreviation: string;
-  lightNeeds: string;
-  waterNeeds: string;
-  soilNeeds: string;
 }
