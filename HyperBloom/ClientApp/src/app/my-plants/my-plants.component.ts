@@ -36,6 +36,20 @@ export class MyPlantsComponent {
   public UpdatePlant(id: number) {
     this.router.navigate(['my-plants/' + id]);
   }
+
+  public WaterPlant(id: number) {
+    this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['my-plants']);
+      });
+  }
+
+  public FertilizePlant(id: number) {
+    this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['my-plants']);
+      });
+  }
 }
 
 interface Plant {
@@ -45,4 +59,6 @@ interface Plant {
   lightNeeds: string;
   waterNeeds: string;
   soilNeeds: string;
+  wateredDate: Date;
+  fertilizedDate: Date;
 }
