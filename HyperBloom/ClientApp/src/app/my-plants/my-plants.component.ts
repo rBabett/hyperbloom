@@ -29,15 +29,7 @@ export class MyPlantsComponent implements OnInit {
     this.plants = res);
   }
   public DeletePlant(id: number) {
-    this.http.delete(getBaseUrl() + 'api/plants/' + id).subscribe({
-      error: error => {
-        console.error('There was an error!', error);
-      }
-    })
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['my-plants']);
-      });
+    this.plantService.deletePlant(id);
   }
 
   public UpdatePlant(id: number) {
