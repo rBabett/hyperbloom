@@ -9,4 +9,6 @@ public interface IPlantService
     Task<Plant?> GetPlantById(int id);
     Task<bool> DeletePlantById(int id);
     Task UpdatePlant(int id, Plant updatedPlant);
+    Task WaterPlant(int id);
+    Task FertilizePlant(int id);
 }

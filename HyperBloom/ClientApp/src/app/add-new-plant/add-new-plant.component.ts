@@ -2,6 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
+import { Plant } from "../my-plants/my-plants.component";
+import { Needs } from "../my-plants/my-plants.component";
 
 @Component({
   selector: 'app-add-new-plant',
@@ -19,10 +21,10 @@ export class AddNewPlantComponent {
 
   newPlantForm = this.formBuilder.group({
     name: '',
-    abbreviation: '',
     lightNeeds: '',
     waterNeeds: '',
     soilNeeds: '',
+    color: '',
   });
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
@@ -44,10 +46,10 @@ export class AddNewPlantComponent {
 
     const formData = {
       Name: this.newPlantForm.get('name')?.value,
-      Abbreviation: this.newPlantForm.get('abbreviation')?.value,
       LightNeeds: this.newPlantForm.get('lightNeeds')?.value,
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
-      SoilNeeds: this.newPlantForm.get('soilNeeds')?.value
+      SoilNeeds: this.newPlantForm.get('soilNeeds')?.value,
+      Color: this.newPlantForm.get('color')?.value,
     };
 
     this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe({
@@ -60,15 +62,3 @@ export class AddNewPlantComponent {
 
 }
 
-interface Needs {
-  name: string;
-  type: number;
-}
-
-interface Plant {
-  name: string;
-  abbreviation: string;
-  lightNeeds: string;
-  waterNeeds: string;
-  soilNeeds: string;
-}

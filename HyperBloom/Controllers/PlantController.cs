@@ -63,6 +63,7 @@ public class PlantController : ControllerBase
         {
             return BadRequest($"Plant {id} cannot be deleted.");
         }
+
         return Ok($"Plant {id} has been deleted.");
     }
 
@@ -77,5 +78,19 @@ public class PlantController : ControllerBase
 
         await _plantService.UpdatePlant(id, updatedPlant);
         return Ok($"Plant {id} updated.");
+    }
+
+    [HttpPut("{id}/water")]
+    public async Task<IActionResult> WaterPlant([FromRoute] int id)
+    {
+        await _plantService.WaterPlant(id);
+        return Ok($"Plant {id} has been watered.");
+    }
+
+    [HttpPut("{id}/fertilize")]
+    public async Task<IActionResult> FertilizePlant([FromRoute] int id)
+    {
+        await _plantService.FertilizePlant(id);
+        return Ok($"Plant {id} has been fertilized.");
     }
 }

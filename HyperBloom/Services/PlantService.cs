@@ -66,6 +66,30 @@ public class PlantService : IPlantService
         await transaction.CommitAsync();
     }
 
+    public async Task WaterPlant(int id)
+    {
+        var transaction = await _context.Database.BeginTransactionAsync();
+        var plantToWater = await _context.Plants.FirstOrDefaultAsync(plant => plant.Id.Equals(id));
+        if (plantToWater != null)
+        {
+            plantToWater.WateredDate = DateTime.Today;
+        }
+        await _context.SaveChangesAsync().ConfigureAwait(true);
+        await transaction.CommitAsync();
+    }
+
+    public async Task FertilizePlant(int id)
+    {
+        var transaction = await _context.Database.BeginTransactionAsync();
+        var plantToWater = await _context.Plants.FirstOrDefaultAsync(plant => plant.Id.Equals(id));
+        if (plantToWater != null)
+        {
+            plantToWater.FertilizedDate = DateTime.Today;
+        }
+        await _context.SaveChangesAsync().ConfigureAwait(true);
+        await transaction.CommitAsync();
+    }
+
     private void UpdatePlantProperties(Plant plantToUpdate, Plant updatedProps)
     {
         PropertyInfo[] plantProperties = plantToUpdate.GetType().GetProperties();

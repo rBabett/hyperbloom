@@ -11,13 +11,6 @@
   </div>
 
   <div>
-    <label for="abbreviation">
-      Abbreviation
-    </label>
-    <input placeholder="An emoji or letter" [(ngModel)]="abbreviation" id="abbreviation" type="text" formControlName="abbreviation">
-  </div>
-
-  <div>
     <label for="lightNeeds">
       Light Needs
     </label>
@@ -51,6 +44,13 @@
         {{soilneed.name}}
       </option>
     </select>
+  </div>
+
+  <div>
+    <label for="color">
+      Color
+    </label>
+    <input [(ngModel)]="color" type="color" id="color" formControlName="color"/>
   </div>
   <button class="button" type="submit">Update Plant</button>
 </form>
