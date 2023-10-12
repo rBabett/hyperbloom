@@ -7,7 +7,8 @@ import {formatDate, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-my-plants',
-  templateUrl: './my-plants.component.html'
+  templateUrl: './my-plants.component.html',
+  styleUrls: [ './my-plants.component.css' ]
 })
 export class MyPlantsComponent implements OnInit {
   public plants: Plant[] = [];
