@@ -91,8 +91,8 @@ After this, you will be ready to run the application!
 ## Roadmap
 
 - [X] CRUD operations with plants
-- [ ] Watering/fertilizing operations
-    - [ ] Track watering/fertilizing date
+- [X] Watering/fertilizing operations
+- [ ] Sizeable garden grid
 - [ ] Nicer CSS
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
