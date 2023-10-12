@@ -23,10 +23,10 @@
       <td>{{ plant.lightNeeds }}</td>
       <td>{{ plant.waterNeeds }}</td>
       <td>{{ plant.soilNeeds }}</td>
-      <td>Last watered date
-        <button>Water</button></td>
-      <td>Last fertilized date
-        <button>Fertilize</button></td>
+      <td>{{ formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en') }}
+        <button (click)="WaterPlant(plant.id)">Water</button></td>
+      <td>{{ formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en') }}
+        <button (click)="FertilizePlant(plant.id)">Fertilize</button></td>
       <td>
         <button (click)="UpdatePlant(plant.id)">Update</button>
       </td>

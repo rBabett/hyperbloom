@@ -53,4 +53,28 @@ export class PlantService {
     })
     setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
   }
+
+  waterPlant(id: number) {
+    this.Http.put(getBaseUrl() + 'api/plants/' + id + '/water', {}).subscribe({
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    })
+    this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['my-plants']);
+      });
+  }
+
+  fertilizePlant(id: number) {
+    this.Http.put(getBaseUrl() + 'api/plants/' + id + '/fertilize', {}).subscribe({
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    })
+    this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['my-plants']);
+      });
+  }
 }

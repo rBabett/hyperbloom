@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {getBaseUrl} from "../../main";
 import {Router} from "@angular/router";
 import { PlantService } from "../plant.service";
+import {formatDate, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-my-plants',
@@ -26,7 +27,7 @@ export class MyPlantsComponent implements OnInit {
 
   private GetPlant() {
     this.plantService.getPlants().subscribe(res =>
-    this.plants = res.sort((a, b) => a.id.toString().localeCompare(b.id.toString())));
+    this.plants = res.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
   }
   public DeletePlant(id: number) {
     this.plantService.deletePlant(id);
@@ -37,18 +38,14 @@ export class MyPlantsComponent implements OnInit {
   }
 
   public WaterPlant(id: number) {
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['my-plants']);
-      });
+    this.plantService.waterPlant(id);
   }
 
   public FertilizePlant(id: number) {
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['my-plants']);
-      });
+    this.plantService.fertilizePlant(id);
   }
+
+  protected readonly formatDate = formatDate;
 }
 
 export interface Plant {
