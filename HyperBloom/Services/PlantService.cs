@@ -96,7 +96,9 @@ public class PlantService : IPlantService
 
         foreach (PropertyInfo prop in plantProperties)
         {
-            if (prop.CanWrite)
+            if (prop.CanWrite &&
+                !prop.Name.Equals("WateredDate") &&
+                !prop.Name.Equals("FertilizedDate"))
             {
                 var newPropValue = prop.GetValue(updatedProps);
                 prop.SetValue(plantToUpdate,
