@@ -9,10 +9,6 @@
   transform: rotate(45deg);
 }
 
-.plant-water-btn {
-  transform: rotate(-45deg);
-}
-
 .plant-water-btn:hover {
   background: linear-gradient(120deg, #CAE9FE, #A8ECEC, #5BDCE1, #48B1DA);
   border: 1px solid #5BDCE1;
