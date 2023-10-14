@@ -1,37 +1,34 @@
 <h1 id="tableLabel">My plants</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
 <p *ngIf="!plants?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="plants.length">
+<table id="plants-table" class='table table-striped' aria-labelledby="tableLabel" *ngIf="plants.length">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Light Needs</th>
-      <th>Water Needs</th>
-      <th>Soil Needs</th>
-      <th>Last watered</th>
-      <th>Last fertilized</th>
+      <th class="plant-name-head">Name</th>
+      <th class="plant-light-head">Light Needs</th>
+      <th class="plant-water-head">Water Needs</th>
+      <th class="plant-soil-head">Soil Needs</th>
+      <th class="plant-water-date-head">Last watered</th>
+      <th class="plant-fertilize-date-head">Last fertilized</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    <tr [bgColor]="plant.color" *ngFor="let plant of plants">
-      <td>{{ plant.name }}</td>
-      <td>{{ plant.lightNeeds }}</td>
-      <td>{{ plant.waterNeeds }}</td>
-      <td>{{ plant.soilNeeds }}</td>
-      <td>{{ formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en') }}
-        <button (click)="WaterPlant(plant.id)">Water</button></td>
-      <td>{{ formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en') }}
-        <button (click)="FertilizePlant(plant.id)">Fertilize</button></td>
+  <tbody id="plants-table-body">
+    <tr class="plant-row" [bgColor]="plant.color" *ngFor="let plant of plants">
+      <td class="plant-name">{{ plant.name }}</td>
+      <td class="plant-light">{{ plant.lightNeeds }}</td>
+      <td class="plant-water">{{ plant.waterNeeds }}</td>
+      <td class="plant-soil">{{ plant.soilNeeds }}</td>
+      <td class="plant-water-date">{{ formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en') }}
+        <button class="plant-water-btn" (click)="WaterPlant(plant.id)">Water</button></td>
+      <td class="plant-fertilize-date">{{ formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en') }}
+        <button class="plant-fertilize-btn" (click)="FertilizePlant(plant.id)">Feed</button></td>
       <td>
-        <button (click)="UpdatePlant(plant.id)">Update</button>
+        <button class="plant-update" (click)="UpdatePlant(plant.id)">Update</button>
       </td>
       <td>
-        <button (click)="DeletePlant(plant.id)">Delete</button>
+        <button class="plant-delete" (click)="DeletePlant(plant.id)">Delete</button>
       </td>
     </tr>
   </tbody>
