@@ -33,7 +33,7 @@
 
 ## About The Project
 
-Hyper Bloom is a web application that aims to help hobbyist and professional gardeners both in visualizing their plants' needs and keep track of watering and fertilization dates.
+Hyper Bloom is a web application that aims to help newbies, hobbyists and professional gardeners both in visualizing their plants' needs and keep track of watering and fertilization dates. Using built-in types for light, water and soil needs, Hyper Bloom urges its users to learn more about their plants. <br>
 For future features, see the <a href="#roadmap">roadmap</a>!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -85,6 +85,8 @@ After this, you will be ready to run the application!
 
 
 ## Usage
+![image](https://github.com/rBabett/hyperbloom/assets/113454591/17742117-03bc-4ad4-8d45-b4f07efb5672)
+
 <img src="https://github.com/rBabett/hyperbloom/assets/113454591/f4feaa78-a3da-44d6-bb5e-127263d9200a" width="120" height="120"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
