@@ -85,6 +85,8 @@ After this, you will be ready to run the application!
 
 
 ## Usage
+![image](https://github.com/rBabett/hyperbloom/assets/113454591/17742117-03bc-4ad4-8d45-b4f07efb5672)
+
 <img src="https://github.com/rBabett/hyperbloom/assets/113454591/f4feaa78-a3da-44d6-bb5e-127263d9200a" width="120" height="120"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
