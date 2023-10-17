@@ -64,16 +64,33 @@ public class GardenService : IGardenService
         await transaction.CommitAsync();
     }
 
-    public async Task UpdateGardenCells(int id, List<Cell> cells)
+    public async Task UpdateGardenCells(int id, List<Cell> updatedCells)
     {
         var transaction = await _context.Database.BeginTransactionAsync();
         var gardenToUpdate = await _context.Gardens.FirstOrDefaultAsync(garden => garden.Id.Equals(id));
         if (gardenToUpdate != null)
         {
-            //TODO
+            UpdateCells(updatedCells, gardenToUpdate);
         }
 
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
+    }
+
+    private void UpdateCells(List<Cell> updatedCells, Garden gardenToUpdate)
+    {
+        List<Cell> cellsInGarden =
+            _context.Cells.Where(cell => cell.GardenId.Equals(gardenToUpdate.Id)).ToList();
+        foreach (Cell cellToUpdate in cellsInGarden)
+        {
+            foreach (Cell updatedCell in updatedCells)
+            {
+                if (cellToUpdate.ColumnPosition == updatedCell.ColumnPosition &&
+                    cellToUpdate.RowPosition == updatedCell.RowPosition)
+                {
+                    PlantService.UpdateObjProperties(cellToUpdate, updatedCell);
+                }
+            }
+        }
     }
 }
