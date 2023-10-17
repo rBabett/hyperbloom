@@ -99,6 +99,30 @@ public class GardenService : IGardenService
         await transaction.CommitAsync();
     }
 
+    public async Task WaterCell(int id)
+    {
+        var transaction = await _context.Database.BeginTransactionAsync();
+        var cellToWater = await _context.Cells.FirstOrDefaultAsync(c => c.CellId.Equals(id));
+        if (cellToWater != null)
+        {
+            cellToWater.WateredDate = DateTime.Today;
+        }
+        await _context.SaveChangesAsync().ConfigureAwait(true);
+        await transaction.CommitAsync();
+    }
+
+    public async Task FertilizeCell(int id)
+    {
+        var transaction = await _context.Database.BeginTransactionAsync();
+        var cellToFertilize = await _context.Cells.FirstOrDefaultAsync(c => c.CellId.Equals(id));
+        if (cellToFertilize != null)
+        {
+            cellToFertilize.FertilizedDate = DateTime.Today;
+        }
+        await _context.SaveChangesAsync().ConfigureAwait(true);
+        await transaction.CommitAsync();
+    }
+
     private async Task UpdateCells(List<Cell> updatedCells, Garden gardenToUpdate)
     {
         List<Cell> cellsInGarden =

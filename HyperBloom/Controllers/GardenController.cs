@@ -101,4 +101,19 @@ public class GardenController : ControllerBase
         return Ok($"Garden's cells updated.");
     }
     
+
+    [HttpPut("{id}/water")]
+    public async Task<IActionResult> WaterCell([FromRoute] int id)
+    {
+        await _gardenService.WaterCell(id);
+        return Ok($"Cell {id} has been watered.");
+    }
+
+    [HttpPut("{id}/fertilize")]
+    public async Task<IActionResult> FertilizeCell([FromRoute] int id)
+    {
+        await _gardenService.FertilizeCell(id);
+        return Ok($"Cell {id} has been fertilized.");
+    }
+    
 }

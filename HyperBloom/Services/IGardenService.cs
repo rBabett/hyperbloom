@@ -11,4 +11,7 @@ public interface IGardenService
     Task<bool> DeleteGardenById(int id);
     Task UpdateGarden(int id, Garden updatedGarden);
     Task UpdateGardenCells(int id, List<Cell> cells);
+
+    Task WaterCell(int id);
+    Task FertilizeCell(int id);
 }
