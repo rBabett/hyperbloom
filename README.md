@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="https://github.com/rBabett/hyperbloom/assets/113454591/4d4c1f41-dfb2-481d-9509-44d198a708f3" alt="Logo" width="200" height="200">
+    <img src="https://github.com/rBabett/hyperbloom/assets/113454591/f8772975-0f12-47fb-9525-d69b0f54886d" alt="Logo" width="200" height="200">
   </a>
 
 <h3 align="center">Hyper Bloom</h3>
@@ -52,9 +52,6 @@ For the backend:
 For the database:
 * ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-
-<img src="https://github.com/rBabett/hyperbloom/assets/113454591/f4feaa78-a3da-44d6-bb5e-127263d9200a" width="120" height="120"/>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -62,11 +59,23 @@ For the database:
 
 ### Prerequisites
 
-First, you will need Node Package Manager to run the application.
+1. First, you will need Node Package Manager to run the application.
 * npm
   ```sh
   npm install npm@latest -g
   ```
+
+2. You will need to create the database "HyperBloom" in postgres. The connection should have the following:
+<details>
+  <summary>Connection</summary>
+  <ul>
+    <li>Host: localhost</li>
+    <li>Port: 5432</li>
+    <li>User: postgres</li>
+    <li>Password: postgres</li>
+    <li>Database: HyperBloom</li>
+  </ul>
+</details>
 
 ### Installation
 
@@ -85,9 +94,15 @@ After this, you will be ready to run the application!
 
 
 ## Usage
-![image](https://github.com/rBabett/hyperbloom/assets/113454591/17742117-03bc-4ad4-8d45-b4f07efb5672)
 
-<img src="https://github.com/rBabett/hyperbloom/assets/113454591/f4feaa78-a3da-44d6-bb5e-127263d9200a" width="120" height="120"/>
+Hyper Bloom is still in early stages and under constant development. <br>
+This colorful table helps you visualize your plants' needs. In the future, this part will look much better - until then, it's an early sneak-peek of what you can expect.:) <br>
+
+<details>
+<img src="https://github.com/rBabett/hyperbloom/assets/113454591/8ef8c3fc-5445-4af0-afb2-2bfb13dcef6f">
+</details>
+
+<img src="https://github.com/rBabett/hyperbloom/assets/113454591/d0164a49-36f2-4c45-8ed7-ad62696df50d" width="120" height="120"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,7 +114,10 @@ After this, you will be ready to run the application!
   - [ ] Plantable seeds
   - [ ] Watering/fertilizing plants straigth from the garden
 - [ ] Estimated vs actual harvest visualization
+  - [ ] Harvest visualization in plants table
+  - [ ] Harvest visualization in garden
 - [ ] Nicer CSS
+  - [ ] Hand-drawn icons
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
