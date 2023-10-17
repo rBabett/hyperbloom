@@ -7,20 +7,20 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { MyPlantsComponent } from './my-plants/my-plants.component';
 import { AddNewPlantComponent } from "./add-new-plant/add-new-plant.component";
 import { UpdatePlantComponent } from "./update-plant/update-plant.component";
+import { MyGardensComponent } from "./my-gardens/my-gardens.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     MyPlantsComponent,
     AddNewPlantComponent,
     UpdatePlantComponent,
+    MyGardensComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -28,7 +28,7 @@ import { UpdatePlantComponent } from "./update-plant/update-plant.component";
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'counter', component: CounterComponent},
+      {path: 'my-gardens', component: MyGardensComponent},
       {path: 'my-plants', component: MyPlantsComponent},
       {path: 'my-plants/:id', component: UpdatePlantComponent},
       {path: 'add-new-plant', component: AddNewPlantComponent},
