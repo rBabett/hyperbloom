@@ -26,7 +26,7 @@ public class PlantService : IPlantService
         _context.Plants.Add(plant);
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
-        return plant.Id;
+        return plant.PlantsId;
     }
 
     public async Task<Plant?> GetPlantById(int id)
@@ -38,7 +38,7 @@ public class PlantService : IPlantService
 
         var plant = await _context.Plants
             .AsNoTracking()
-            .Where(plant => plant.Id.Equals(id))
+            .Where(plant => plant.PlantsId.Equals(id))
             .FirstOrDefaultAsync()
             .ConfigureAwait(true);
         return plant;
@@ -46,18 +46,18 @@ public class PlantService : IPlantService
 
     public async Task<bool> DeletePlantById(int id)
     {
-        var plantToDelete = _context.Plants.FirstOrDefault(plant => plant.Id.Equals(id));
+        var plantToDelete = _context.Plants.FirstOrDefault(plant => plant.PlantsId.Equals(id));
         if (plantToDelete == null) return false;
         _context.Plants.Remove(plantToDelete);
         await _context.SaveChangesAsync().ConfigureAwait(true);
 
-        return _context.Plants.FirstOrDefault(plant => plant.Id == plantToDelete.Id) == null;
+        return _context.Plants.FirstOrDefault(plant => plant.PlantsId == plantToDelete.PlantsId) == null;
     }
 
     public async Task UpdatePlant(int id, Plant updatedPlant)
     {
         var transaction = await _context.Database.BeginTransactionAsync();
-        var plantToUpdate = await _context.Plants.FirstOrDefaultAsync(plant => plant.Id.Equals(id));
+        var plantToUpdate = await _context.Plants.FirstOrDefaultAsync(plant => plant.PlantsId.Equals(id));
         if (plantToUpdate != null)
         {
             UpdateObjProperties<Plant>(plantToUpdate, updatedPlant);
@@ -69,7 +69,7 @@ public class PlantService : IPlantService
     public async Task WaterPlant(int id)
     {
         var transaction = await _context.Database.BeginTransactionAsync();
-        var plantToWater = await _context.Plants.FirstOrDefaultAsync(plant => plant.Id.Equals(id));
+        var plantToWater = await _context.Plants.FirstOrDefaultAsync(plant => plant.PlantsId.Equals(id));
         if (plantToWater != null)
         {
             plantToWater.WateredDate = DateTime.Today;
@@ -81,7 +81,7 @@ public class PlantService : IPlantService
     public async Task FertilizePlant(int id)
     {
         var transaction = await _context.Database.BeginTransactionAsync();
-        var plantToWater = await _context.Plants.FirstOrDefaultAsync(plant => plant.Id.Equals(id));
+        var plantToWater = await _context.Plants.FirstOrDefaultAsync(plant => plant.PlantsId.Equals(id));
         if (plantToWater != null)
         {
             plantToWater.FertilizedDate = DateTime.Today;
@@ -98,7 +98,8 @@ public class PlantService : IPlantService
         {
             if (prop.CanWrite &&
                 !prop.Name.Equals("WateredDate") &&
-                !prop.Name.Equals("FertilizedDate"))
+                !prop.Name.Equals("FertilizedDate") &&
+                !prop.Name.Equals("Cells"))
             {
                 var newPropValue = prop.GetValue(updatedProps);
                 prop.SetValue(objToUpdate,

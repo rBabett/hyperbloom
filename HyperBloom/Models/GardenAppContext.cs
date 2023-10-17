@@ -22,7 +22,7 @@ public class GardenAppContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Plant>()
-            .Property(p => p.Id)
+            .Property(p => p.PlantsId)
             .ValueGeneratedOnAdd()
             .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
     }
