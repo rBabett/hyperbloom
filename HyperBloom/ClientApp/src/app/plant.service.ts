@@ -29,14 +29,14 @@ export class PlantService {
   }
 
   deletePlant(id: number) {
-    this.Http.delete(getBaseUrl() + 'api/plants/' + id).subscribe({
-      error: error => {
+    this.Http.delete(getBaseUrl() + 'api/plants/' + id).subscribe(
+      (data) => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-plants']);
+        });
+      },
+      (error) => {
         console.error('There was an error!', error);
-      }
-    })
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['my-plants']);
       });
   }
 
@@ -46,35 +46,36 @@ export class PlantService {
     LightNeeds: string | null | undefined;
     Name: string | null | undefined
   }) {
-    this.Http.put<Plant>(getBaseUrl() + 'api/plants/' + id, formData).subscribe({
-      error: error => {
+    this.Http.put<Plant>(getBaseUrl() + 'api/plants/' + id, formData).subscribe(
+      () => {
+        this.router.navigate(['my-plants']);
+      },
+      (error) => {
         console.error('There was an error!', error);
-      }
-    })
-    setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
+      });
   }
 
   waterPlant(id: number) {
-    this.Http.put(getBaseUrl() + 'api/plants/' + id + '/water', {}).subscribe({
-      error: error => {
+    this.Http.put(getBaseUrl() + 'api/plants/' + id + '/water', {}).subscribe(
+      () => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-plants']);
+        });
+      },
+      (error) => {
         console.error('There was an error!', error);
-      }
-    })
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['my-plants']);
       });
   }
 
   fertilizePlant(id: number) {
-    this.Http.put(getBaseUrl() + 'api/plants/' + id + '/fertilize', {}).subscribe({
-      error: error => {
+    this.Http.put(getBaseUrl() + 'api/plants/' + id + '/fertilize', {}).subscribe(
+      () => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-plants']);
+        });
+      },
+      (error) => {
         console.error('There was an error!', error);
-      }
-    })
-    this.router.navigateByUrl('/', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['my-plants']);
       });
   }
 }

@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 namespace HyperBloom.Models.Entities;
 
 
-[PrimaryKey(nameof(Id))]
+[PrimaryKey(nameof(PlantsId))]
 public class Plant
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; }
+    public int PlantsId { get; }
     
     [Required]
     public string Name { get; set; }

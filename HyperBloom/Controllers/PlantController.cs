@@ -37,7 +37,7 @@ public class PlantController : ControllerBase
         var id = await _plantService.AddNewPlant(jsonObject);
         if (!string.IsNullOrEmpty(id.ToString()))
         {
-            return Ok($"Plant with id {id} has been added.");
+            return Ok($"Plant {id} has been added.");
         }
 
         return BadRequest("Plant cannot be added.");
