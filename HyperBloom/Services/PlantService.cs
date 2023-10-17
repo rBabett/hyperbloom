@@ -60,7 +60,7 @@ public class PlantService : IPlantService
         var plantToUpdate = await _context.Plants.FirstOrDefaultAsync(plant => plant.Id.Equals(id));
         if (plantToUpdate != null)
         {
-            UpdatePlantProperties(plantToUpdate, updatedPlant);
+            UpdateObjProperties<Plant>(plantToUpdate, updatedPlant);
         }
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
@@ -90,9 +90,9 @@ public class PlantService : IPlantService
         await transaction.CommitAsync();
     }
 
-    private void UpdatePlantProperties(Plant plantToUpdate, Plant updatedProps)
+    public static void UpdateObjProperties<T>(T objToUpdate, T updatedProps)
     {
-        PropertyInfo[] plantProperties = plantToUpdate.GetType().GetProperties();
+        PropertyInfo[] plantProperties = objToUpdate.GetType().GetProperties();
 
         foreach (PropertyInfo prop in plantProperties)
         {
@@ -101,7 +101,7 @@ public class PlantService : IPlantService
                 !prop.Name.Equals("FertilizedDate"))
             {
                 var newPropValue = prop.GetValue(updatedProps);
-                prop.SetValue(plantToUpdate,
+                prop.SetValue(objToUpdate,
                     newPropValue,
                     null);
             }
