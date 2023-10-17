@@ -24,6 +24,10 @@ public class Cell
     [ForeignKey("PlantId")]
     public Plant? Plant { get; set; }
     
+    public int EstimatedHarvest { get; set; }
+    public int ActualHarvest { get; set; }
+    public DateTime WateredDate { get; set; }
+    public DateTime FertilizedDate { get; set; }
     
     public Cell(int gardenId, int columnPosition, int rowPosition)
     {
