@@ -5,6 +5,7 @@ namespace HyperBloom.Services;
 public interface IGardenService
 {
     Task<List<Garden>> GetGardens();
+    Task<List<Cell>> GetCells();
     Task<int> AddNewGarden(Garden garden);
     Task<Garden?> GetGardenById(int id);
     Task<bool> DeleteGardenById(int id);
