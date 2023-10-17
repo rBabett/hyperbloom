@@ -1,17 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace HyperBloom.Models.Entities;
 
-[PrimaryKey(nameof(Id))]
+[PrimaryKey(nameof(CellId))]
 public class Cell
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; }
+    public int CellId { get; init; }
     
-    [Required]
+    [ForeignKey("GardenId")]
     public int GardenId { get; set; }
     
     [Required]
@@ -19,7 +20,8 @@ public class Cell
     
     [Required]
     public int RowPosition { get; set; }
-    
+
+    [ForeignKey("PlantId")]
     public Plant? Plant { get; set; }
     
     
