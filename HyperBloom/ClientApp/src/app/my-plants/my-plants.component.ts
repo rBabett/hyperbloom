@@ -28,7 +28,7 @@ export class MyPlantsComponent implements OnInit {
 
   private GetPlant() {
     this.plantService.getPlants().subscribe(res =>
-    this.plants = res.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+    this.plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0));
   }
   public DeletePlant(id: number) {
     this.plantService.deletePlant(id);
@@ -50,7 +50,7 @@ export class MyPlantsComponent implements OnInit {
 }
 
 export interface Plant {
-  id: number;
+  plantId: number;
   name: string;
   abbreviation: string;
   lightNeeds: string;

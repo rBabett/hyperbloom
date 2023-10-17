@@ -52,12 +52,15 @@ export class AddNewPlantComponent {
       Color: this.newPlantForm.get('color')?.value,
     };
 
-    this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe({
-      error: error => {
+    this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe(
+      (data) => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-plants']);
+        });
+      },
+      (error) => {
         console.error('There was an error!', error);
-      }
-    })
-    setTimeout(()=>{this.router.navigate(['/my-plants'])}, 100);
+      });
   }
 
 }
