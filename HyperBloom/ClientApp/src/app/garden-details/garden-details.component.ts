@@ -44,7 +44,7 @@ export class GardenDetailsComponent {
     this.id = id;
 
     plantService.getPlants().subscribe(res => {
-      this.plants = res;
+      this.plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
     })
 
     this.gardenService.getGardenById(id).subscribe(result => {
