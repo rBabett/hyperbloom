@@ -1,7 +1,7 @@
 <h1 id="tableLabel">My plants</h1>
 <p *ngIf="!plants?.length"><em>Loading...</em></p>
 
-<table id="plants-table" class='table table-striped' aria-labelledby="tableLabel" *ngIf="plants.length">
+<table id="plants-table" class='table' aria-labelledby="tableLabel" *ngIf="plants.length">
   <thead>
     <tr>
       <th class="plant-name-head">Name</th>
@@ -34,4 +34,4 @@
   </tbody>
 </table>
 
-<a [routerLink]="['/add-new-plant']">Add New Plant</a>
+<button [routerLink]="['/add-new-plant']">Add New Plant</button>

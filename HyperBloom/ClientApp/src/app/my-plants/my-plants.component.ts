@@ -52,7 +52,6 @@ export class MyPlantsComponent implements OnInit {
 export interface Plant {
   plantId: number;
   name: string;
-  abbreviation: string;
   lightNeeds: string;
   waterNeeds: string;
   soilNeeds: string;
