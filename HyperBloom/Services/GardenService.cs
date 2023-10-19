@@ -148,6 +148,7 @@ public class GardenService : IGardenService
                 if (cellToUpdate.CellId == updatedCell.CellId)
                 {
                     PlantService.UpdateObjProperties(cellToUpdate, updatedCell);
+                    await _context.SaveChangesAsync();
                 }
             }
         }
