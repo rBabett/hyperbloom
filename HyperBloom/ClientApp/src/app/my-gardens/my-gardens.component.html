@@ -4,7 +4,7 @@
 <div id="gardens" class='table table-striped' aria-labelledby="tableLabel" *ngIf="gardens.length">
   <div class="garden" *ngFor="let garden of gardens">
     <br>
-    <p>{{garden.name}}</p>
+    <h5>{{garden.name}}</h5>
     <button class="plant-update" (click)="UpdatePlant(garden.gardenId)">Update Garden</button>
     <button class="plant-update" (click)="ViewGardenDetails(garden.gardenId)">View Garden Details</button>
     <div class="rows" *ngFor="let row of gardenService.createRange(garden.rows)">
