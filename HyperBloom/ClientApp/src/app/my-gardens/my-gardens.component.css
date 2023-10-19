@@ -1,0 +1,8 @@
+.cell {
+  background: radial-gradient(#6E4427, #85512B, #A16840, #8E5E3A);
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  display: inline-flex;
+  flex-direction: column
+}
