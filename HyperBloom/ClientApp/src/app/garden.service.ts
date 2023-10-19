@@ -22,6 +22,10 @@ export class GardenService {
   getGardens(): Observable<Garden[]> {
     return this.Http.get<Garden[]>(getBaseUrl() + 'api/gardens');
   }
+
+  getCells(): Observable<Cell[]>{
+    return this.Http.get<Cell[]>(getBaseUrl() + 'api/cells');
+  }
   getGardenById(id: number): Observable<Garden> {
     return this.Http.get<Garden>(getBaseUrl() + 'api/gardens/' + id);
   }
