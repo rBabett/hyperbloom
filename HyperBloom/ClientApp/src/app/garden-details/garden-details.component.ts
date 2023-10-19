@@ -20,7 +20,7 @@ export class GardenDetailsComponent {
   public name: string | undefined;
   public columns: number | undefined;
   public rows: number | undefined;
-  public cells: Cell[] | undefined;
+  public cells: Cell[] = [];
   public plants: Plant[] | undefined;
   public selectedPlant: Plant | null | undefined;
 
@@ -72,6 +72,31 @@ export class GardenDetailsComponent {
   protected readonly MyGardensComponent = MyGardensComponent;
 
   onSubmit(id: number) {
-    this.gardenService.updateGardenCells(id, this.cells);
+    const cellsData = []
+
+    for(let cell of this.cells) {
+      if (cell.plant) {
+        let formData = {
+          CellId: cell.cellId,
+          GardenId: cell.gardenId,
+          ColumnPosition: cell.columnPosition,
+          RowPosition: cell.rowPosition,
+          Plant: {
+            PlantId: cell.plant?.plantId,
+            Name: cell.plant?.name,
+            LightNeeds: cell.plant?.lightNeeds,
+            WaterNeeds: cell.plant?.waterNeeds,
+            SoilNeeds: cell.plant?.soilNeeds,
+            WateredDate: cell.plant?.wateredDate,
+            FertilizedDate: cell.plant?.fertilizedDate,
+            Color: cell.plant?.color
+          }
+        }
+        cellsData.push(formData);
+      }
+    }
+
+    this.gardenService.updateGardenCells(id, cellsData);
+    console.log(this.cells);
   }
 }

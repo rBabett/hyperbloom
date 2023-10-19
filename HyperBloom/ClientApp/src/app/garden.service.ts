@@ -54,7 +54,7 @@ export class GardenService {
       });
   }
 
-  updateGardenCells(id: number, cells: Cell[] | undefined) {
+  updateGardenCells(id: number, cells: any) {
     this.Http.put<Cell[]>(getBaseUrl() + 'api/gardens/' + id + '/cells', cells).subscribe(
       () => {
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
