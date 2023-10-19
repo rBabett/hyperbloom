@@ -23,6 +23,8 @@ export class GardenDetailsComponent {
   public cells: Cell[] = [];
   public plants: Plant[] | undefined;
   public selectedPlant: Plant | null | undefined;
+  public previousPlants: PlantInCell[] = [];
+  public newPlants: PlantInCell[] = [];
 
   private http: HttpClient;
   private baseUrl: string;
@@ -44,8 +46,15 @@ export class GardenDetailsComponent {
     this.id = id;
 
     plantService.getPlants().subscribe(res => {
-      this.plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
-    })
+      const plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
+      this.gardenService.getCells().subscribe(res => {
+        const plantsToRemove = plants.filter(p => {
+          return res.some(c => {
+            return c.plant?.plantId === p.plantId;
+          })
+        });
+        this.plants = plants.filter(p => !plantsToRemove.includes(p))
+      })});
 
     this.gardenService.getGardenById(id).subscribe(result => {
       this.id = result.gardenId
@@ -54,6 +63,12 @@ export class GardenDetailsComponent {
       this.columns = result.columns;
       this.rows = result.rows;
       this.cells = result.cells;
+      for(let cell of this.cells) {
+        this.previousPlants.push({
+          cellId: cell.cellId,
+          plant: cell.plant
+        })
+      }
     }, error => console.error(error));
 
     this.http = http;
@@ -68,14 +83,14 @@ export class GardenDetailsComponent {
   sowSeed(cell: any, plant: any): void {
     cell.plant = plant;
   }
-
-  protected readonly MyGardensComponent = MyGardensComponent;
-
   onSubmit(id: number) {
     const cellsData = []
 
     for(let cell of this.cells) {
-      if (cell.plant) {
+      let prevPlant = this.previousPlants.find(p => p.cellId == cell.cellId);
+      if (cell.plant?.name == prevPlant?.plant?.name) {
+        continue;
+      }
         let formData = {
           CellId: cell.cellId,
           GardenId: cell.gardenId,
@@ -94,9 +109,13 @@ export class GardenDetailsComponent {
         }
         cellsData.push(formData);
       }
-    }
 
     this.gardenService.updateGardenCells(id, cellsData);
     console.log(this.cells);
   }
+}
+
+export interface PlantInCell {
+  cellId: number,
+  plant: Plant | null
 }
