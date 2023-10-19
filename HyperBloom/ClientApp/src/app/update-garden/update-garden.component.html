@@ -1,0 +1,28 @@
+<h1>Update Garden</h1>
+
+<form [formGroup]="newGardenForm"
+      (ngSubmit)="onSubmit(id)">
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input placeholder="You garden's name" [(ngModel)]="name" id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="columns">
+      Columns
+    </label>
+    <input placeholder="You garden's columns" [(ngModel)]="columns" id="columns" type="number" max="10" formControlName="columns">
+  </div>
+
+  <div>
+    <label for="rows">
+      Rows
+    </label>
+    <input placeholder="You garden's rows" [(ngModel)]="rows" id="rows" type="number" max="10" formControlName="rows">
+  </div>
+
+  <button class="button" type="submit">Update Garden</button>
+</form>

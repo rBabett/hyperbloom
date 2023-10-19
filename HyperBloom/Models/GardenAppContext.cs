@@ -22,9 +22,11 @@ public class GardenAppContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Plant>()
-            .Property(p => p.PlantsId)
+            .Property(p => p.PlantId)
             .ValueGeneratedOnAdd()
             .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
+        
+        modelBuilder.Entity<Plant>().HasIndex(u => u.Name).IsUnique();
     }
 
 }

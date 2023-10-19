@@ -67,7 +67,6 @@ export class UpdatePlantComponent {
   }
 
   onSubmit(id: number): void {
-    console.log(this.newPlantForm);
 
     const formData = {
       Name: this.newPlantForm.get('name')?.value,

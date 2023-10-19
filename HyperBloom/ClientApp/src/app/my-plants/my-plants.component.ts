@@ -4,6 +4,8 @@ import {getBaseUrl} from "../../main";
 import {Router} from "@angular/router";
 import { PlantService } from "../plant.service";
 import {formatDate, NgIf} from "@angular/common";
+import {Cell} from "../my-gardens/my-gardens.component";
+import {GardenService} from "../garden.service";
 
 @Component({
   selector: 'app-my-plants',
@@ -12,23 +14,37 @@ import {formatDate, NgIf} from "@angular/common";
 })
 export class MyPlantsComponent implements OnInit {
   public plants: Plant[] = [];
+  public cells: Cell[] = [];
   private http: HttpClient;
   private router: Router;
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private Router: Router,
-              private plantService: PlantService) {
+              private plantService: PlantService,
+              private gardenService: GardenService) {
     this.http = http;
     this.router = Router;
   }
 
   ngOnInit() {
-    this.GetPlant();
+    this.GetCells();
+    this.GetPlants()
   }
 
-  private GetPlant() {
-    this.plantService.getPlants().subscribe(res =>
-    this.plants = res.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  private GetCells() {
+    this.gardenService.getCells().subscribe(res =>
+    this.cells = res)
+  }
+  private GetPlants() {
+    this.plantService.getPlants().subscribe(res => {
+    const plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
+      this.gardenService.getCells().subscribe(res => {
+        this.cells = res
+        this.plants = plants.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+          t.name === value.name
+          )))
+      })});
   }
   public DeletePlant(id: number) {
     this.plantService.deletePlant(id);
@@ -50,9 +66,8 @@ export class MyPlantsComponent implements OnInit {
 }
 
 export interface Plant {
-  id: number;
+  plantId: number;
   name: string;
-  abbreviation: string;
   lightNeeds: string;
   waterNeeds: string;
   soilNeeds: string;

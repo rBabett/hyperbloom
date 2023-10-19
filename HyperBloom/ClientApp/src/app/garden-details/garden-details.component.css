@@ -1,0 +1,83 @@
+.cell {
+  background: radial-gradient(#6E4427, #85512B, #A16840, #8E5E3A);
+  border: 1px solid black;
+  height: 100px;
+  max-height: 100px;
+  width: 100px;
+  display: inline-flex;
+  flex-direction: column
+}
+
+.rows {
+  max-height: 100px;
+}
+
+.cell:hover {
+  background: radial-gradient(#674025, #6E4427, #946039, #6E4427);
+}
+
+.coordinates {
+  color: wheat;
+  margin: 0;
+  font-size: small;
+  max-height: 20%;
+  width: 100%;
+  z-index: 5;
+  display: inline-flex;
+}
+
+.planted {
+  margin: 20px auto 22px;
+  z-index: 10;
+  display: inline-flex;
+}
+
+.seeds {
+  margin: 0 0 1em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 40em;
+}
+
+.seeds li {
+  display: inline-flex;
+}
+
+.seeds button {
+  flex: 1.5;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .2em;
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+  height: 1.8em;
+}
+
+.seeds button:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+  bottom: .1em;
+}
+
+.seeds button:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.seeds button.selected {
+  background-color: black;
+  color: white;
+}
+
+.seeds button.selected:hover {
+  background-color: #505050;
+  color: white;
+}
+
+.seeds button.selected:active {
+  background-color: black;
+  color: white;
+}

@@ -81,6 +81,20 @@ public class GardenService : IGardenService
         if (gardenToUpdate != null)
         {
             PlantService.UpdateObjProperties(gardenToUpdate, updatedGarden);
+            for (int column = 1; column <= updatedGarden.Columns; column++)
+            {
+                for (int row = 1; row <= updatedGarden.Rows; row++)
+                {
+                    Cell? cellOnPosition =
+                        updatedGarden.Cells.FirstOrDefault(c => c.ColumnPosition == column && c.RowPosition == row);
+                    if (cellOnPosition == null)
+                    {
+                        Cell currentCell = new Cell(gardenToUpdate.GardenId, column, row);
+                        _context.Cells.Add(currentCell);
+                        gardenToUpdate.Cells.Add(currentCell);
+                    }
+                }
+            }
         }
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
@@ -126,7 +140,7 @@ public class GardenService : IGardenService
     private async Task UpdateCells(List<Cell> updatedCells, Garden gardenToUpdate)
     {
         List<Cell> cellsInGarden =
-            await _context.Cells.Include(c => c.Plant).Where(cell => cell.GardenId.Equals(gardenToUpdate.GardenId)).ToListAsync();
+            await _context.Cells.Where(cell => cell.GardenId.Equals(gardenToUpdate.GardenId)).ToListAsync();
         foreach (Cell cellToUpdate in cellsInGarden)
         {
             foreach (Cell updatedCell in updatedCells)
@@ -134,6 +148,7 @@ public class GardenService : IGardenService
                 if (cellToUpdate.CellId == updatedCell.CellId)
                 {
                     PlantService.UpdateObjProperties(cellToUpdate, updatedCell);
+                    await _context.SaveChangesAsync();
                 }
             }
         }
