@@ -110,8 +110,8 @@ This colorful table helps you visualize your plants' needs. In the future, this 
 
 - [X] CRUD operations with plants
 - [X] Watering/fertilizing operations
-- [ ] Sizeable garden grid
-  - [ ] Plantable seeds
+- [X] Sizeable garden grid
+  - [X] Plantable seeds
   - [ ] Watering/fertilizing plants straigth from the garden
 - [ ] Estimated vs actual harvest visualization
   - [ ] Harvest visualization in plants table
