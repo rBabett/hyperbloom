@@ -13,7 +13,7 @@
 }
 
 .cell:hover {
-  background-color: #895F3F;
+  background: radial-gradient(#674025, #6E4427, #946039, #6E4427);
 }
 
 .coordinates {
