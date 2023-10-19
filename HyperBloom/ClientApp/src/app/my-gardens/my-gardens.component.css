@@ -6,6 +6,7 @@
   width: 50px;
   display: inline-flex;
   flex-direction: column;
+  padding: 0px;
 }
 
 .rows {
@@ -13,9 +14,11 @@
 }
 
 .coordinates {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
   top: 10px;
   color: wheat;
-  margin: 0;
   font-size: x-small;
   max-height: 10%;
   width: 100%;
@@ -24,6 +27,7 @@
 }
 
 .planted {
-  margin: auto;
+  margin: 5px auto auto;
   z-index: 10;
+  font-size: larger;
 }
