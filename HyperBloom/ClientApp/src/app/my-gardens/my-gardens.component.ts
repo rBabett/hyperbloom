@@ -70,7 +70,7 @@ export interface Cell {
   gardenId: number;
   columnPosition: number;
   rowPosition: number;
-  plant: Plant | null
+  plant: Plant | null;
   estimatedHarvest: number;
   actualHarvest: number;
   wateredDate: Date;
