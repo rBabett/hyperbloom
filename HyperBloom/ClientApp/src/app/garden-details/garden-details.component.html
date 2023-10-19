@@ -1,0 +1,26 @@
+<h1>{{name}}</h1>
+<details *ngIf="plants?.length">
+  <summary>Seeds</summary>
+  <ul class="seeds">
+    <li *ngFor="let plant of plants">
+      <button [ngStyle]="{'background-color': (plant.color)}" class="seed" [class.selected]="plant === selectedPlant" type="button" (click)="onSelect(plant)">
+      {{plant.name}}
+      </button>
+    </li>
+    <li>
+      <button [class.selected]="null === selectedPlant" type="button" (click)="onSelect(null)">
+        None
+      </button>
+    </li>
+  </ul>
+</details>
+
+
+<div class="rows" *ngFor="let row of gardenService.createRange(rows)">
+  <div class="cell" *ngFor="let column of gardenService.createRange(columns)" (click)="sowSeed(gardenService.getCellOnPosition(garden, column, row), selectedPlant)">
+    <p class="coordinates">R{{row}} / C{{column}}</p>
+    <p [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row)?.plant?.color)}" class="planted">{{gardenService.getCellOnPosition(garden, column, row)?.plant?.name}}</p>
+  </div>
+</div>
+
+<button (click)="onSubmit(id)" class="button" type="submit">Save Changes</button>
