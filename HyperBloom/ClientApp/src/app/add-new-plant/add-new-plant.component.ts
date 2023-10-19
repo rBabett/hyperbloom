@@ -42,7 +42,6 @@ export class AddNewPlantComponent {
   }
 
   onSubmit(): void {
-    console.log(this.newPlantForm);
 
     const formData = {
       Name: this.newPlantForm.get('name')?.value,
