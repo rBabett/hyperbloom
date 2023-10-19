@@ -1,7 +1,7 @@
 <h1 id="tableLabel">My plants</h1>
 <p *ngIf="!plants?.length"><em>Loading...</em></p>
 
-<table id="plants-table" class='table table-striped' aria-labelledby="tableLabel" *ngIf="plants.length">
+<table id="plants-table" class='table' aria-labelledby="tableLabel" *ngIf="plants.length">
   <thead>
     <tr>
       <th class="plant-name-head">Name</th>
@@ -21,17 +21,17 @@
       <td class="plant-water">{{ plant.waterNeeds }}</td>
       <td class="plant-soil">{{ plant.soilNeeds }}</td>
       <td class="plant-water-date">{{ formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en') }}
-        <button class="plant-water-btn" (click)="WaterPlant(plant.id)">Water</button></td>
+        <button class="plant-water-btn" (click)="WaterPlant(plant.plantId)">Water</button></td>
       <td class="plant-fertilize-date">{{ formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en') }}
-        <button class="plant-fertilize-btn" (click)="FertilizePlant(plant.id)">Feed</button></td>
+        <button class="plant-fertilize-btn" (click)="FertilizePlant(plant.plantId)">Feed</button></td>
       <td>
-        <button class="plant-update" (click)="UpdatePlant(plant.id)">Update</button>
+        <button class="plant-update" (click)="UpdatePlant(plant.plantId)">Update</button>
       </td>
       <td>
-        <button class="plant-delete" (click)="DeletePlant(plant.id)">Delete</button>
+        <button class="plant-delete" (click)="DeletePlant(plant.plantId)">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
 
-<a [routerLink]="['/add-new-plant']">Add New Plant</a>
+<button [routerLink]="['/add-new-plant']">Add New Plant</button>

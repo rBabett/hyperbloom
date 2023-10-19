@@ -48,7 +48,9 @@ export class PlantService {
   }) {
     this.Http.put<Plant>(getBaseUrl() + 'api/plants/' + id, formData).subscribe(
       () => {
-        this.router.navigate(['my-plants']);
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-plants']);
+        });
       },
       (error) => {
         console.error('There was an error!', error);
