@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {getBaseUrl} from "../main";
 import {Router} from "@angular/router";
 import { Needs } from "./my-plants/my-plants.component";
+import {Seed} from "./my-gardens/my-gardens.component";
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,10 @@ export class PlantService {
 
   getPlants(): Observable<Plant[]> {
     return this.Http.get<Plant[]>(getBaseUrl() + 'api/plants');
+  }
+
+  getSeeds(): Observable<Seed[]> {
+    return this.Http.get<Seed[]>(getBaseUrl() + 'api/plants/seeds')
   }
 
   getNeeds(): Observable<Needs[]> {
