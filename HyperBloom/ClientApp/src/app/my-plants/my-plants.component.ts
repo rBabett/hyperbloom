@@ -40,10 +40,7 @@ export class MyPlantsComponent implements OnInit {
     const plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
       this.gardenService.getCells().subscribe(res => {
         this.cells = res
-        this.plants = plants.filter((value, index, self) =>
-        index === self.findIndex((t) => (
-          t.name === value.name
-          )))
+        this.plants = plants
       })});
   }
   public DeletePlant(id: number) {

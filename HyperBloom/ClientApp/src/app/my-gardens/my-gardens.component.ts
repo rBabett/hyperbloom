@@ -70,9 +70,15 @@ export interface Cell {
   gardenId: number;
   columnPosition: number;
   rowPosition: number;
-  plant: Plant | null;
+  plant: Seed | null;
   estimatedHarvest: number;
   actualHarvest: number;
   wateredDate: Date;
   fertilizeDate: Date;
+}
+
+export interface Seed {
+  seedId: number;
+  name: string;
+  color: string;
 }

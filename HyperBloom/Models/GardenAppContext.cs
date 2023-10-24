@@ -15,7 +15,8 @@ public class GardenAppContext : DbContext
     
     public DbSet<Needs> Needs { get; set; }
     public DbSet<Plant> Plants { get; set; }
-    
+    public DbSet<Seed> Seeds { get; set; }
+
     public DbSet<Garden> Gardens { get; set; }
     
     public DbSet<Cell> Cells { get; set; }

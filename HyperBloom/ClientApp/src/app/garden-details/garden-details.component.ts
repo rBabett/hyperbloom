@@ -4,7 +4,7 @@ import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {GardenService} from "../garden.service";
 import {Router} from "@angular/router";
-import {Cell, Garden, MyGardensComponent} from "../my-gardens/my-gardens.component";
+import {Cell, Garden, MyGardensComponent, Seed} from "../my-gardens/my-gardens.component";
 import {Plant} from "../my-plants/my-plants.component";
 import {PlantService} from "../plant.service";
 
@@ -95,13 +95,8 @@ export class GardenDetailsComponent {
           ColumnPosition: cell.columnPosition,
           RowPosition: cell.rowPosition,
           Plant: {
-            PlantId: cell.plant?.plantId,
+            SeedId: cell.plant?.seedId,
             Name: cell.plant?.name,
-            LightNeeds: cell.plant?.lightNeeds,
-            WaterNeeds: cell.plant?.waterNeeds,
-            SoilNeeds: cell.plant?.soilNeeds,
-            WateredDate: cell.plant?.wateredDate,
-            FertilizedDate: cell.plant?.fertilizedDate,
             Color: cell.plant?.color
           }
         }
@@ -115,5 +110,5 @@ export class GardenDetailsComponent {
 
 export interface PlantInCell {
   cellId: number,
-  plant: Plant | null
+  plant: Seed | null
 }
