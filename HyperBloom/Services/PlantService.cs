@@ -20,10 +20,16 @@ public class PlantService : IPlantService
         return await _context.Plants.ToListAsync().ConfigureAwait(true);
     }
 
+    public async Task<List<Seed>> GetSeeds()
+    {
+        return await _context.Seeds.ToListAsync().ConfigureAwait(true);
+    }
+
     public async Task<int> AddNewPlant(Plant plant)
     {
         var transaction = await _context.Database.BeginTransactionAsync();
         _context.Plants.Add(plant);
+        _context.Seeds.Add(new Seed(plant.Name, plant.Color));
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
         return plant.PlantId;
@@ -49,9 +55,18 @@ public class PlantService : IPlantService
         var plantToDelete = _context.Plants.FirstOrDefault(plant => plant.PlantId.Equals(id));
         if (plantToDelete == null) return false;
         _context.Plants.Remove(plantToDelete);
+        if (!DeleteSeed(plantToDelete)) return false;
         await _context.SaveChangesAsync().ConfigureAwait(true);
 
         return _context.Plants.FirstOrDefault(plant => plant.PlantId == plantToDelete.PlantId) == null;
+    }
+
+    private bool DeleteSeed(Plant plantToDelete)
+    {
+        var seedToDelete = _context.Seeds.FirstOrDefault(seed => seed.SeedId.Equals(plantToDelete.PlantId));
+        if (seedToDelete == null) return false;
+        _context.Seeds.Remove(seedToDelete);
+        return true;
     }
 
     public async Task UpdatePlant(int id, Plant updatedPlant)
@@ -61,9 +76,20 @@ public class PlantService : IPlantService
         if (plantToUpdate != null)
         {
             UpdateObjProperties<Plant>(plantToUpdate, updatedPlant);
+            await UpdateSeed(updatedPlant, plantToUpdate);
         }
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
+    }
+
+    private async Task UpdateSeed(Plant updatedPlant, Plant plantToUpdate)
+    {
+        var seedToUpdate = await _context.Seeds.FirstOrDefaultAsync(seed => seed.SeedId.Equals(plantToUpdate.PlantId));
+        if (seedToUpdate != null)
+        {
+            seedToUpdate.Name = updatedPlant.Name;
+            seedToUpdate.Color = updatedPlant.Color;
+        }
     }
 
     public async Task WaterPlant(int id)

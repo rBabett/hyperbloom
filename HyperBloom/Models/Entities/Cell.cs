@@ -21,8 +21,8 @@ public class Cell
     [Required]
     public int RowPosition { get; set; }
 
-    [ForeignKey("PlantId")]
-    public Plant? Plant { get; set; }
+    [ForeignKey("SeedId")]
+    public Seed? Plant { get; set; }
     
     public int EstimatedHarvest { get; set; }
     public int ActualHarvest { get; set; }
