@@ -21,8 +21,8 @@ export class GardenDetailsComponent {
   public columns: number | undefined;
   public rows: number | undefined;
   public cells: Cell[] = [];
-  public plants: Plant[] | undefined;
-  public selectedPlant: Plant | null | undefined;
+  public plants: Seed[] | undefined;
+  public selectedPlant: Seed | null | undefined;
   public previousPlants: PlantInCell[] = [];
   public newPlants: PlantInCell[] = [];
 
@@ -45,8 +45,8 @@ export class GardenDetailsComponent {
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.id = id;
 
-    plantService.getPlants().subscribe(res => {
-      const plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
+    plantService.getSeeds().subscribe(res => {
+      const plants = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0)
       this.gardenService.getCells().subscribe(res => {
         this.plants = plants.filter((value, index, self) =>
           index === self.findIndex((t) => (
@@ -81,6 +81,13 @@ export class GardenDetailsComponent {
   sowSeed(cell: any, plant: any): void {
     cell.plant = plant;
   }
+  waterCell(cell: any): void {
+    this.gardenService.waterCell(cell.cellId);
+  }
+
+  fertilizeCell(cell: any): void {
+    this.gardenService.fertilizeCell(cell.cellId);
+  }
   onSubmit(id: number) {
     const cellsData = []
 
@@ -94,6 +101,8 @@ export class GardenDetailsComponent {
           GardenId: cell.gardenId,
           ColumnPosition: cell.columnPosition,
           RowPosition: cell.rowPosition,
+          WateredDate: cell.wateredDate,
+          FertilizedDate: cell.fertilizeDate,
           Plant: {
             SeedId: cell.plant?.seedId,
             Name: cell.plant?.name,

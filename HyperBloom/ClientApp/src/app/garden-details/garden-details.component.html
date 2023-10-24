@@ -14,6 +14,8 @@
 <div class="rows" *ngFor="let row of gardenService.createRange(rows)">
   <div class="cell" *ngFor="let column of gardenService.createRange(columns)" (click)="sowSeed(gardenService.getCellOnPosition(garden, column, row), selectedPlant)">
     <p class="coordinates">R{{row}} / C{{column}}</p>
+    <button (click)="waterCell(gardenService.getCellOnPosition(garden, column, row))">Water</button>
+    <button (click)="fertilizeCell(gardenService.getCellOnPosition(garden, column, row))">Feed</button>
     <p [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row)?.plant?.color)}" class="planted">{{gardenService.getCellOnPosition(garden, column, row)?.plant?.name}}</p>
   </div>
 </div>
