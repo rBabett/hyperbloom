@@ -5,11 +5,19 @@
   <thead>
   <tr>
     <th class="plant-name-head">Name</th>
+    <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody id="plants-table-body">
   <tr class="plant-row" [bgColor]="seed.color" *ngFor="let seed of seeds">
     <td class="plant-name">{{ seed.name }}</td>
+    <td>
+      <button class="plant-update" (click)="UpdateSeed(seed.seedId)">Update</button>
+    </td>
+    <td>
+      <button class="plant-delete" (click)="DeleteSeed(seed.seedId)">Delete</button>
+    </td>
   </tr>
   </tbody>
 </table>
