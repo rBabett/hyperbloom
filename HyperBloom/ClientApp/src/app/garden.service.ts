@@ -99,7 +99,7 @@ export class GardenService {
       .map((n, index) => index + 1);
   }
 
-  getCellOnPosition(garden: Garden | undefined, column: number, row: number) {
-    return garden?.cells.find(c => c.columnPosition === column && c.rowPosition === row);
+  getCellOnPosition(garden: Garden, column: number, row: number) : Cell {
+    return <Cell>garden.cells.find(c => c.columnPosition === column && c.rowPosition === row);
   }
 }
