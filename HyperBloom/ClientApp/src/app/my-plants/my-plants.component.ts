@@ -14,7 +14,6 @@ import {GardenService} from "../garden.service";
 })
 export class MyPlantsComponent implements OnInit {
   public plants: Plant[] = [];
-  public cells: Cell[] = [];
   private http: HttpClient;
   private router: Router;
 
@@ -34,19 +33,12 @@ export class MyPlantsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.GetCells();
     this.GetPlants()
-  }
-
-  private GetCells() {
-    this.gardenService.getCells().subscribe(res =>
-    this.cells = res)
   }
   private GetPlants() {
     this.plantService.getPlants().subscribe(res => {
     const plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
       this.gardenService.getCells().subscribe(res => {
-        this.cells = res
         this.plants = plants
       })});
   }
