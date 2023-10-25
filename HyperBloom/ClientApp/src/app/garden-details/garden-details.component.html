@@ -15,25 +15,29 @@
   <div (mouseover)="gardenService.getCellOnPosition(garden, column, row).showDetails = true"
        (mouseleave)="gardenService.getCellOnPosition(garden, column, row).showDetails = false"
        class="cell" *ngFor="let column of gardenService.createRange(columns)" (click)="sowSeed(gardenService.getCellOnPosition(garden, column, row), selectedPlant)">
-    <p class="coordinates">R{{row}} / C{{column}}</p>
-    <button (click)="waterCell(gardenService.getCellOnPosition(garden, column, row))">Water</button>
-    <button (click)="fertilizeCell(gardenService.getCellOnPosition(garden, column, row))">Feed</button>
-    <p [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row)?.plant?.color)}" class="planted">{{gardenService.getCellOnPosition(garden, column, row)?.plant?.name}}</p>
-
-    <div class="details" *ngIf="gardenService.getCellOnPosition(garden, column, row).showDetails === true">
+    <div class="top-line">
       <p class="coordinates">R{{row}} / C{{column}}</p>
-      <p>Last watered: {{
+      <button class="water-btn" (click)="waterCell(gardenService.getCellOnPosition(garden, column, row), garden.gardenId)">W</button>
+      <button class="fertilize-btn" (click)="fertilizeCell(gardenService.getCellOnPosition(garden, column, row), garden.gardenId)">F</button>
+    </div>
+    <p [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row).plant?.color)}" class="planted">{{gardenService.getCellOnPosition(garden, column, row).plant?.name}}</p>
+    <div class="dates">
+      <p class="water-date">Last watered:
+        {{
         (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not watered' :
           (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
             (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
               (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en'))
-        }}</p>
-      <p>Last fertilized: {{
-        (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizeDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not watered' :
-          (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizeDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
-            (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizeDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
-              (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizeDate, 'yyyy/MM/dd', 'en'))
-        }}</p>
+        }}
+      </p>
+      <p class="fertilize-date">Last fertilized:
+        {{
+        (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not watered' :
+          (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
+            (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
+              (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en'))
+        }}
+      </p>
     </div>
   </div>
 </div>
@@ -41,4 +45,4 @@
 
 
 
-<button (click)="onSubmit(id)" class="button" type="submit">Save Changes</button>
+<button (click)="onSubmit(id)" class="save-button" type="submit">Save Changes</button>
