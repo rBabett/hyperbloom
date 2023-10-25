@@ -42,7 +42,11 @@ export class GardenService {
       });
   }
 
-  addNewGarden(formData: FormData) {
+  addNewGarden(formData: {
+    Columns: number | null | undefined;
+    Name: string | null | undefined;
+    Rows: number | null | undefined
+  }) {
     this.Http.post<Plant>(getBaseUrl() + 'api/gardens/add-new-garden', formData).subscribe(
       (data) => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
