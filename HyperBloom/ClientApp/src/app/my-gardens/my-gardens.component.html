@@ -16,8 +16,8 @@
         <p class="planted" [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row).plant?.color)}">{{gardenService.getCellOnPosition(garden, column, row).plant?.name?.charAt(0)}}</p>
       </div>
     </div>
-    <button class="plant-delete" (click)="DeletePlant(garden.gardenId)">Delete Garden</button>
+    <button class="garden-delete" (click)="DeletePlant(garden.gardenId)">Delete Garden</button>
   </div>
 </div>
 
-<button [routerLink]="['/add-new-garden']">Add New Garden</button>
+<button class="add-new-btn" [routerLink]="['/add-new-garden']">Add New Garden</button>
