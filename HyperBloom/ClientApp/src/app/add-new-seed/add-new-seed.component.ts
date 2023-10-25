@@ -30,7 +30,6 @@ export class AddNewSeedComponent {
     this.baseUrl = baseUrl;
     this.router = Router;
   }
-
   onSubmit(): void {
 
     const formData = {
