@@ -55,6 +55,12 @@ export class GardenDetailsComponent implements OnInit{
     this.id = id;
     this.yesterday.setDate(this.yesterday.getDate() - 1);
 
+    this.getSeeds();
+
+    this.getGardenById(id);
+  }
+
+  getSeeds() {
     this.plantService.getSeeds().subscribe(res => {
       const plants = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0)
       this.gardenService.getCells().subscribe(res => {
@@ -63,7 +69,8 @@ export class GardenDetailsComponent implements OnInit{
             t.name === value.name
           )))
       })});
-
+  }
+  getGardenById(id: number) {
     this.gardenService.getGardenById(id).subscribe(result => {
       this.id = result.gardenId
       this.garden = result;
@@ -89,12 +96,12 @@ export class GardenDetailsComponent implements OnInit{
   sowSeed(cell: any, plant: any): void {
     cell.plant = plant;
   }
-  waterCell(cell: any): void {
-    this.gardenService.waterCell(cell.cellId);
+  waterCell(cell: Cell, gardenId: number): void {
+    this.gardenService.waterCell(cell.cellId, gardenId);
   }
 
-  fertilizeCell(cell: any): void {
-    this.gardenService.fertilizeCell(cell.cellId);
+  fertilizeCell(cell: Cell, gardenId: number): void {
+    this.gardenService.fertilizeCell(cell.cellId, gardenId);
   }
   onSubmit(id: number) {
     const cellsData = []
@@ -110,7 +117,7 @@ export class GardenDetailsComponent implements OnInit{
           ColumnPosition: cell.columnPosition,
           RowPosition: cell.rowPosition,
           WateredDate: cell.wateredDate,
-          FertilizedDate: cell.fertilizeDate,
+          FertilizedDate: cell.fertilizedDate,
           Plant: {
             SeedId: cell.plant?.seedId,
             Name: cell.plant?.name,
@@ -125,6 +132,7 @@ export class GardenDetailsComponent implements OnInit{
   }
 
   protected readonly formatDate = formatDate;
+  protected readonly Date = Date;
 }
 
 export interface PlantInCell {
