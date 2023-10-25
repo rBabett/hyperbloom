@@ -1,1 +1,17 @@
-<p>my-seeds works!</p>
+<h1 id="tableLabel">My seeds</h1>
+<p *ngIf="!seeds?.length"><em>Loading...</em></p>
+
+<table id="plants-table" class='table' aria-labelledby="tableLabel" *ngIf="seeds.length">
+  <thead>
+  <tr>
+    <th class="plant-name-head">Name</th>
+  </tr>
+  </thead>
+  <tbody id="plants-table-body">
+  <tr class="plant-row" [bgColor]="seed.color" *ngFor="let seed of seeds">
+    <td class="plant-name">{{ seed.name }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button [routerLink]="['/add-new-seed']">Add New Seed</button>
