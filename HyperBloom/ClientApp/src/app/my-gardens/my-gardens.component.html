@@ -1,4 +1,7 @@
 <h1 id="tableLabel">My gardens</h1>
+
+<button [routerLink]="['my-seeds']">View my seeds</button>
+
 <p *ngIf="!gardens?.length"><em>Loading...</em></p>
 
 <div id="gardens" class='table table-striped' aria-labelledby="tableLabel" *ngIf="gardens.length">
