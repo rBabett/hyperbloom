@@ -1,9 +1,9 @@
 .cell {
   background: radial-gradient(#6E4427, #85512B, #A16840, #8E5E3A);
   border: 1px solid black;
-  height: 125px;
-  max-height: 125px;
-  width: 125px;
+  height: 130px;
+  max-height: 130px;
+  width: 130px;
   display: inline-flex;
   flex-direction: column
 }
@@ -27,10 +27,12 @@
 
 .water-date {
   text-align: start;
+  margin-right: 10px;
 }
 
 .fertilize-date {
   text-align: end;
+  margin-left: 10px;
 }
 
 .save-button {
