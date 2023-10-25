@@ -65,12 +65,11 @@ export class GardenDetailsComponent implements OnInit{
   getSeeds() {
     this.seedService.getSeeds().subscribe(res => {
       const plants = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0)
-      this.gardenService.getCells().subscribe(res => {
-        this.plants = plants.filter((value, index, self) =>
-          index === self.findIndex((t) => (
-            t.name === value.name
-          )))
-      })});
+      this.plants = plants.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+          t.name === value.name
+          ))
+      )});
   }
   getGardenById(id: number) {
     this.gardenService.getGardenById(id).subscribe(result => {
