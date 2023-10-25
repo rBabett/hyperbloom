@@ -54,6 +54,14 @@ public class PlantService : IPlantService
         return _context.Plants.FirstOrDefault(plant => plant.PlantId == plantToDelete.PlantId) == null;
     }
 
+    private bool DeleteSeed(Plant plantToDelete)
+    {
+        var seedToDelete = _context.Seeds.FirstOrDefault(seed => seed.SeedId.Equals(plantToDelete.PlantId));
+        if (seedToDelete == null) return false;
+        _context.Seeds.Remove(seedToDelete);
+        return true;
+    }
+
     public async Task UpdatePlant(int id, Plant updatedPlant)
     {
         var transaction = await _context.Database.BeginTransactionAsync();

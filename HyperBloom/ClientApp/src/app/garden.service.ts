@@ -42,6 +42,21 @@ export class GardenService {
       });
   }
 
+  addNewGarden(formData: {
+    Columns: number | null | undefined;
+    Name: string | null | undefined;
+    Rows: number | null | undefined
+  }) {
+    this.Http.post<Plant>(getBaseUrl() + 'api/gardens/add-new-garden', formData).subscribe(
+      (data) => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-gardens']);
+        });
+      },
+      (error) => {
+        console.error('There was an error!', error);
+      });
+  }
   updateGarden(id: number, formData: {
     Name: string | null | undefined;
     Columns: number | null | undefined;
@@ -70,11 +85,11 @@ export class GardenService {
       });
   }
 
-  waterCell(id: number) {
-    this.Http.put(getBaseUrl() + 'api/gardens/' + id + '/water', {}).subscribe(
+  waterCell(cellId: number, gardenId: number) {
+    this.Http.put(getBaseUrl() + 'api/gardens/' + cellId + '/water', {}).subscribe(
       () => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['my-gardens/' + id]);
+          this.router.navigate(['garden-details/' + gardenId]);
         });
       },
       (error) => {
@@ -82,11 +97,11 @@ export class GardenService {
       });
   }
 
-  fertilizeCell(id: number) {
-    this.Http.put(getBaseUrl() + 'api/gardens/' + id + '/fertilize', {}).subscribe(
+  fertilizeCell(cellId: number, gardenId: number) {
+    this.Http.put(getBaseUrl() + 'api/gardens/' + cellId + '/fertilize', {}).subscribe(
       () => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['my-gardens/' + id]);
+          this.router.navigate(['garden-details/' + gardenId]);
         });
       },
       (error) => {
@@ -99,7 +114,7 @@ export class GardenService {
       .map((n, index) => index + 1);
   }
 
-  getCellOnPosition(garden: Garden | undefined, column: number, row: number) {
-    return garden?.cells.find(c => c.columnPosition === column && c.rowPosition === row);
+  getCellOnPosition(garden: Garden, column: number, row: number) : Cell {
+    return <Cell>garden.cells.find(c => c.columnPosition === column && c.rowPosition === row);
   }
 }

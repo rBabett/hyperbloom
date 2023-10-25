@@ -1,15 +1,17 @@
-import { Component, Inject } from "@angular/core";
+import {Component, Inject, OnInit} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Plant } from "../my-plants/my-plants.component";
 import { Needs } from "../my-plants/my-plants.component";
+import {PlantService} from "../plant.service";
+import {getBaseUrl} from "../../main";
 
 @Component({
   selector: 'app-add-new-plant',
   templateUrl: './add-new-plant.component.html'
 })
-export class AddNewPlantComponent {
+export class AddNewPlantComponent implements OnInit{
   public needs: Needs[] = [];
   public soilNeeds: Needs[] = [];
   public waterNeeds: Needs[] = [];
@@ -26,19 +28,25 @@ export class AddNewPlantComponent {
     soilNeeds: '',
     color: '',
   });
+
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private formBuilder: FormBuilder,
-              private Router: Router) {
-    http.get<Needs[]>(baseUrl + 'api/needs').subscribe(result => {
+              private Router: Router,
+              private plantService: PlantService) {
+
+    this.http = http;
+    this.baseUrl = baseUrl;
+    this.router = Router;
+  }
+
+  ngOnInit(): void {
+    this.http.get<Needs[]>(getBaseUrl() + 'api/needs').subscribe(result => {
       this.needs = result;
       this.soilNeeds = this.needs.filter(need => need.type == 0);
       this.waterNeeds = this.needs.filter(need => need.type == 1);
       this.lightNeeds = this.needs.filter(need => need.type == 2);
     }, error => console.error(error));
-    this.http = http;
-    this.baseUrl = baseUrl;
-    this.router = Router;
   }
 
   onSubmit(): void {
@@ -50,17 +58,7 @@ export class AddNewPlantComponent {
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value,
       Color: this.newPlantForm.get('color')?.value,
     };
-
-    this.http.post<Plant>(this.baseUrl + 'api/plants/add-new-plant', formData).subscribe(
-      (data) => {
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['my-plants']);
-        });
-      },
-      (error) => {
-        console.error('There was an error!', error);
-      });
+    this.plantService.addNewPlant(formData);
   }
-
 }
 

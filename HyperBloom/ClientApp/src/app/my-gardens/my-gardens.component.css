@@ -30,4 +30,14 @@
   margin: 5px auto auto;
   z-index: 10;
   font-size: larger;
+  text-shadow: 1px 0 5px black, 0 0 1em black, 0 0 0.2em black;
+}
+
+.add-new-btn {
+  margin-top: 10px !important;
+  margin-bottom: 30px !important;
+}
+
+.garden-delete {
+  margin-top: 10px;
 }
