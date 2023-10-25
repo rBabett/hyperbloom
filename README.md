@@ -33,7 +33,7 @@
 
 ## About The Project
 
-Hyper Bloom is a web application that aims to help newbies, hobbyists and professional gardeners both in visualizing their plants' needs and keep track of watering and fertilization dates. Using built-in types for light, water and soil needs, Hyper Bloom urges its users to learn more about their plants. <br>
+Hyper Bloom is a web application that aims to help newbies, hobbyists and professional gardeners alike in visualizing their plants' needs and keep track of watering and fertilization dates. Using built-in types for light, water and soil needs, Hyper Bloom urges its users to learn more about their plants. <br>
 For future features, see the <a href="#roadmap">roadmap</a>!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -83,10 +83,12 @@ For the database:
    ```sh
    git clone https://github.com/rBabett/hyperbloom.git
    ```
-2. Install NPM packages and restore dependencies
+2. Install NPM packages, restore dependencies and update the database
    ```sh
    npm install
    dotnet restore
+   dotnet ef migrations add InitialMigration
+   dotnet ef database update
    ```
 After this, you will be ready to run the application!
 
@@ -112,7 +114,7 @@ This colorful table helps you visualize your plants' needs. In the future, this 
 - [X] Watering/fertilizing operations
 - [X] Sizeable garden grid
   - [X] Plantable seeds
-  - [ ] Watering/fertilizing plants straigth from the garden
+  - [X] Watering/fertilizing plants straight from the garden
 - [ ] Estimated vs actual harvest visualization
   - [ ] Harvest visualization in plants table
   - [ ] Harvest visualization in garden
