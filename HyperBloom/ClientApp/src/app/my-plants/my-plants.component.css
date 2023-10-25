@@ -41,3 +41,18 @@
 .plant-water-date, .plant-fertilize-date {
   padding-top: 13px;
 }
+
+.add-new-btn {
+  margin-top: 10px !important;
+  margin-bottom: 30px !important;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: hidden;
+  border-width: 0;
+}
+
+.plant-update, .plant-delete {
+  margin-top: 15px;
+}
