@@ -14,9 +14,13 @@ import {GardenService} from "../garden.service";
 })
 export class MyPlantsComponent implements OnInit {
   public plants: Plant[] = [];
-  public cells: Cell[] = [];
   private http: HttpClient;
   private router: Router;
+
+  public today: Date = new Date();
+  public yesterday = new Date();
+
+
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private Router: Router,
@@ -24,22 +28,17 @@ export class MyPlantsComponent implements OnInit {
               private gardenService: GardenService) {
     this.http = http;
     this.router = Router;
+
+    this.yesterday.setDate(this.yesterday.getDate() - 1);
   }
 
   ngOnInit() {
-    this.GetCells();
     this.GetPlants()
-  }
-
-  private GetCells() {
-    this.gardenService.getCells().subscribe(res =>
-    this.cells = res)
   }
   private GetPlants() {
     this.plantService.getPlants().subscribe(res => {
     const plants = res.sort((a, b) => a.plantId < b.plantId ? -1 : a.plantId > b.plantId ? 1 : 0)
       this.gardenService.getCells().subscribe(res => {
-        this.cells = res
         this.plants = plants
       })});
   }
@@ -60,6 +59,7 @@ export class MyPlantsComponent implements OnInit {
   }
 
   protected readonly formatDate = formatDate;
+  protected readonly Date = Date;
 }
 
 export interface Plant {
