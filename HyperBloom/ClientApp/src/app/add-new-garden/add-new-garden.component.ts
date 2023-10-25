@@ -43,15 +43,7 @@ export class AddNewGardenComponent {
       Columns: this.newGardenForm.get('columns')?.value,
       Rows: this.newGardenForm.get('rows')?.value,
     };
-    this.http.post<Plant>(this.baseUrl + 'api/gardens/add-new-garden', formData).subscribe(
-      (data) => {
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['my-gardens']);
-        });
-      },
-      (error) => {
-        console.error('There was an error!', error);
-      });
+
   }
 
 }
