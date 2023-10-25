@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {Cell, Garden, MyGardensComponent, Seed} from "../my-gardens/my-gardens.component";
 import {Plant} from "../my-plants/my-plants.component";
 import {PlantService} from "../plant.service";
+import {formatDate} from "@angular/common";
 
 
 @Component({
@@ -14,17 +15,20 @@ import {PlantService} from "../plant.service";
   templateUrl: './garden-details.component.html',
   styleUrls: ['./garden-details.component.css']
 })
-export class GardenDetailsComponent {
-  public garden: Garden | undefined;
-  public id: number;
-  public name: string | undefined;
-  public columns: number | undefined;
-  public rows: number | undefined;
+export class GardenDetailsComponent implements OnInit{
+  public garden: Garden;
+  public id: number = 0;
+  public name: string = "";
+  public columns: number = 0;
+  public rows: number = 0;
   public cells: Cell[] = [];
   public plants: Seed[] | undefined;
   public selectedPlant: Seed | null | undefined;
   public previousPlants: PlantInCell[] = [];
   public newPlants: PlantInCell[] = [];
+
+  public today: Date = new Date();
+  public yesterday = new Date();
 
   private http: HttpClient;
   private baseUrl: string;
@@ -41,11 +45,17 @@ export class GardenDetailsComponent {
               private route: ActivatedRoute,
               public gardenService: GardenService,
               private plantService: PlantService) {
+    this.http = http;
+    this.baseUrl = baseUrl;
+    this.router = Router;
+  }
 
+  ngOnInit(): void {
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.id = id;
+    this.yesterday.setDate(this.yesterday.getDate() - 1);
 
-    plantService.getSeeds().subscribe(res => {
+    this.plantService.getSeeds().subscribe(res => {
       const plants = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0)
       this.gardenService.getCells().subscribe(res => {
         this.plants = plants.filter((value, index, self) =>
@@ -61,17 +71,15 @@ export class GardenDetailsComponent {
       this.columns = result.columns;
       this.rows = result.rows;
       this.cells = result.cells;
-      for(let cell of this.cells) {
+      for(let cell of result.cells) {
+        cell.showDetails = false;
         this.previousPlants.push({
           cellId: cell.cellId,
           plant: cell.plant
         })
       }
+      console.log(this.cells);
     }, error => console.error(error));
-
-    this.http = http;
-    this.baseUrl = baseUrl;
-    this.router = Router;
   }
 
   onSelect(plant: any): void {
@@ -115,6 +123,8 @@ export class GardenDetailsComponent {
     this.gardenService.updateGardenCells(id, cellsData);
     console.log(this.cells);
   }
+
+  protected readonly formatDate = formatDate;
 }
 
 export interface PlantInCell {
