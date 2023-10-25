@@ -44,6 +44,7 @@ export class AddNewGardenComponent {
       Rows: this.newGardenForm.get('rows')?.value,
     };
 
+    this.gardenService.addNewGarden(formData);
   }
 
 }
