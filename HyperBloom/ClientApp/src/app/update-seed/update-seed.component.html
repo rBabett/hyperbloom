@@ -1,1 +1,19 @@
-<p>update-seed works!</p>
+<h1>Update Seed</h1>
+
+<form [formGroup]="newSeedForm"
+      (ngSubmit)="onSubmit(id)">
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input placeholder="You seed's name" [(ngModel)]="name" id="name" type="text" formControlName="name">
+  </div>
+  <div>
+    <label for="color">
+      Color
+    </label>
+    <input [(ngModel)]="color" type="color" id="color" formControlName="color"/>
+  </div>
+  <button class="button" type="submit">Update Seed</button>
+</form>
