@@ -31,7 +31,6 @@ export class MyGardensComponent {
   private getGardens() {
     this.gardenService.getGardens().subscribe(res => {
       this.gardens = res.sort((a, b) => a.gardenId < b.gardenId ? -1 : a.gardenId > b.gardenId ? 1 : 0)
-      console.log(this.gardens)
     });
   }
   public DeletePlant(id: number) {
@@ -66,6 +65,7 @@ export interface Garden {
 }
 
 export interface Cell {
+  showDetails: boolean;
   cellId: number;
   gardenId: number;
   columnPosition: number;
