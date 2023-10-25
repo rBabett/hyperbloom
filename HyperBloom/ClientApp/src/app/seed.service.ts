@@ -37,7 +37,7 @@ export class SeedService {
   }
 
   addNewSeed(formData: { Color: string | null | undefined; Name: string | null | undefined }) {
-    this.Http.post<Seed>(getBaseUrl() + 'api/seeds/add-new-seeds', formData).subscribe(
+    this.Http.post<Seed>(getBaseUrl() + 'api/seeds/add-new-seed', formData).subscribe(
       (data) => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
           this.router.navigate(['my-seeds']);
@@ -48,10 +48,7 @@ export class SeedService {
       });
   }
 
-  updateSeed(id: number, formData: {
-    Name: string,
-    Color: string
-  }) {
+  updateSeed(id: number, formData: { Color: string | null | undefined; Name: string | null | undefined }) {
     this.Http.put<Seed>(getBaseUrl() + 'api/seeds/' + id, formData).subscribe(
       () => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
