@@ -28,12 +28,11 @@ export class MyPlantsComponent implements OnInit {
               private gardenService: GardenService) {
     this.http = http;
     this.router = Router;
-
-    this.yesterday.setDate(this.yesterday.getDate() - 1);
   }
 
   ngOnInit() {
     this.GetPlants()
+    this.yesterday.setDate(this.yesterday.getDate() - 1);
   }
   private GetPlants() {
     this.plantService.getPlants().subscribe(res => {

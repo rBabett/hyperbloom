@@ -25,13 +25,6 @@ public class PlantController : ControllerBase
         return Ok(plants);
     }
 
-    [HttpGet("seeds")]
-    public async Task<IActionResult> GetAllSeeds()
-    {
-        List<Seed> seeds = await _plantService.GetSeeds();
-        return Ok(seeds);
-    }
-
     [HttpPost("add-new-plant")]
     public async Task<IActionResult> AddNewPlant([FromBody] JsonElement body)
     {

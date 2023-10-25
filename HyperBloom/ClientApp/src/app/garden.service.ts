@@ -42,6 +42,21 @@ export class GardenService {
       });
   }
 
+  addNewGarden(formData: {
+    Columns: number | null | undefined;
+    Name: string | null | undefined;
+    Rows: number | null | undefined
+  }) {
+    this.Http.post<Plant>(getBaseUrl() + 'api/gardens/add-new-garden', formData).subscribe(
+      (data) => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-gardens']);
+        });
+      },
+      (error) => {
+        console.error('There was an error!', error);
+      });
+  }
   updateGarden(id: number, formData: {
     Name: string | null | undefined;
     Columns: number | null | undefined;

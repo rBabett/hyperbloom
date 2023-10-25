@@ -8,6 +8,7 @@ import {Cell, Garden, MyGardensComponent, Seed} from "../my-gardens/my-gardens.c
 import {Plant} from "../my-plants/my-plants.component";
 import {PlantService} from "../plant.service";
 import {formatDate} from "@angular/common";
+import {SeedService} from "../seed.service";
 
 
 @Component({
@@ -44,6 +45,7 @@ export class GardenDetailsComponent implements OnInit{
               private Router: Router,
               private route: ActivatedRoute,
               public gardenService: GardenService,
+              private seedService: SeedService,
               private plantService: PlantService) {
     this.http = http;
     this.baseUrl = baseUrl;
@@ -61,14 +63,13 @@ export class GardenDetailsComponent implements OnInit{
   }
 
   getSeeds() {
-    this.plantService.getSeeds().subscribe(res => {
+    this.seedService.getSeeds().subscribe(res => {
       const plants = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0)
-      this.gardenService.getCells().subscribe(res => {
-        this.plants = plants.filter((value, index, self) =>
-          index === self.findIndex((t) => (
-            t.name === value.name
-          )))
-      })});
+      this.plants = plants.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+          t.name === value.name
+          ))
+      )});
   }
   getGardenById(id: number) {
     this.gardenService.getGardenById(id).subscribe(result => {

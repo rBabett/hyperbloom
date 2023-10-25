@@ -1,0 +1,27 @@
+.add-new-btn {
+  margin-top: 10px !important;
+  margin-bottom: 30px !important;
+}
+
+.seed-name {
+  padding-top: 24px;
+  text-align: center;
+}
+
+tr {
+  height: 70px;
+}
+
+#seed-table {
+  width: 300px;
+}
+
+.seed-update, .seed-delete {
+  margin-top: 13px;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: hidden;
+  border-width: 0;
+}
