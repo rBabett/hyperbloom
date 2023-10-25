@@ -26,15 +26,13 @@ export class MySeedsComponent implements OnInit {
     this.GetSeeds()
   }
   private GetSeeds() {
-    let seeds: Seed[] = [];
     this.seedService.getSeeds().subscribe(res => {
-      seeds = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0);
-    })
-    this.seeds = seeds.filter((value, index, self) =>
-      index === self.findIndex((t) => (
-        t.name === value.name
-      )))
-
+      const seeds = res.sort((a, b) => a.seedId < b.seedId ? -1 : a.seedId > b.seedId ? 1 : 0)
+      this.seeds = seeds.filter((value, index, self) =>
+          index === self.findIndex((t) => (
+            t.name === value.name
+          ))
+      )});
   }
   public DeleteSeed(id: number) {
     this.seedService.deleteSeed(id);
