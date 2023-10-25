@@ -10,7 +10,7 @@
     <div class="rows" *ngFor="let row of gardenService.createRange(garden.rows)">
       <div class="cell" *ngFor="let column of gardenService.createRange(garden.columns)">
         <p class="coordinates">R{{row}} / C{{column}}</p>
-        <p class="planted" [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row)?.plant?.color)}">{{gardenService.getCellOnPosition(garden, column, row)?.plant?.name?.charAt(0)}}</p>
+        <p class="planted" [ngStyle]="{'color': (gardenService.getCellOnPosition(garden, column, row).plant?.color)}">{{gardenService.getCellOnPosition(garden, column, row).plant?.name?.charAt(0)}}</p>
       </div>
     </div>
     <button class="plant-delete" (click)="DeletePlant(garden.gardenId)">Delete Garden</button>
