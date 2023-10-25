@@ -17,6 +17,11 @@ export class MyPlantsComponent implements OnInit {
   public cells: Cell[] = [];
   private http: HttpClient;
   private router: Router;
+
+  public today: Date = new Date();
+  public yesterday = new Date();
+
+
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private Router: Router,
@@ -24,6 +29,11 @@ export class MyPlantsComponent implements OnInit {
               private gardenService: GardenService) {
     this.http = http;
     this.router = Router;
+
+    this.yesterday.setDate(this.yesterday.getDate() - 1);
+
+    console.log(this.today);
+    console.log(this.yesterday);
   }
 
   ngOnInit() {
@@ -60,6 +70,7 @@ export class MyPlantsComponent implements OnInit {
   }
 
   protected readonly formatDate = formatDate;
+  protected readonly Date = Date;
 }
 
 export interface Plant {

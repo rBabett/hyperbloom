@@ -20,9 +20,19 @@
       <td class="plant-light">{{ plant.lightNeeds }}</td>
       <td class="plant-water">{{ plant.waterNeeds }}</td>
       <td class="plant-soil">{{ plant.soilNeeds }}</td>
-      <td class="plant-water-date">{{ formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en') }}
+      <td class="plant-water-date">{{
+        (formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not watered' :
+        (formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
+          (formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
+            (formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en'))
+        }}
         <button class="plant-water-btn" (click)="WaterPlant(plant.plantId)">Water</button></td>
-      <td class="plant-fertilize-date">{{ formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en') }}
+      <td class="plant-fertilize-date">{{
+        (formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not fertilized' :
+          (formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
+            (formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
+              (formatDate(plant.fertilizedDate, 'yyyy/MM/dd', 'en'))
+        }}
         <button class="plant-fertilize-btn" (click)="FertilizePlant(plant.plantId)">Feed</button></td>
       <td>
         <button class="plant-update" (click)="UpdatePlant(plant.plantId)">Update</button>
