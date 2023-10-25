@@ -31,9 +31,6 @@ export class MyPlantsComponent implements OnInit {
     this.router = Router;
 
     this.yesterday.setDate(this.yesterday.getDate() - 1);
-
-    console.log(this.today);
-    console.log(this.yesterday);
   }
 
   ngOnInit() {
