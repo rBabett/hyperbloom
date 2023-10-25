@@ -24,7 +24,6 @@ public class PlantService : IPlantService
     {
         var transaction = await _context.Database.BeginTransactionAsync();
         _context.Plants.Add(plant);
-        _context.Seeds.Add(new Seed(plant.Name, plant.Color));
         await _context.SaveChangesAsync().ConfigureAwait(true);
         await transaction.CommitAsync();
         return plant.PlantId;
