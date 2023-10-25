@@ -62,6 +62,24 @@ export class PlantService {
       });
   }
 
+  addNewPlant(formData: {
+    WaterNeeds: string | null | undefined;
+    Color: string | null | undefined;
+    SoilNeeds: string | null | undefined;
+    LightNeeds: string | null | undefined;
+    Name: string | null | undefined
+  }) {
+    this.Http.post<Plant>(getBaseUrl() + 'api/plants/add-new-plant', formData).subscribe(
+      (data) => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['my-plants']);
+        });
+      },
+      (error) => {
+        console.error('There was an error!', error);
+      });
+  }
+
   waterPlant(id: number) {
     this.Http.put(getBaseUrl() + 'api/plants/' + id + '/water', {}).subscribe(
       () => {
