@@ -45,12 +45,12 @@ export class MyGardensComponent {
     this.router.navigate(['garden-details/' + id])
   }
 
-  public WaterPlant(id: number) {
-    this.gardenService.waterCell(id);
+  public WaterPlant(id: number, gardenId: number) {
+    this.gardenService.waterCell(id, gardenId);
   }
 
-  public FertilizePlant(id: number) {
-    this.gardenService.fertilizeCell(id);
+  public FertilizePlant(id: number, gardenId: number) {
+    this.gardenService.fertilizeCell(id, gardenId);
   }
 
   protected readonly formatDate = formatDate;
@@ -74,7 +74,7 @@ export interface Cell {
   estimatedHarvest: number;
   actualHarvest: number;
   wateredDate: Date;
-  fertilizeDate: Date;
+  fertilizedDate: Date;
 }
 
 export interface Seed {
