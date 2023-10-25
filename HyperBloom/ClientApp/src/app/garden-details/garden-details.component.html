@@ -24,7 +24,7 @@
     <div class="dates">
       <p class="water-date">Last watered:
         {{
-        (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not watered' :
+        (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? '-' :
           (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
             (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
               (formatDate(gardenService.getCellOnPosition(garden, column, row).wateredDate, 'yyyy/MM/dd', 'en'))
@@ -32,7 +32,7 @@
       </p>
       <p class="fertilize-date">Last fertilized:
         {{
-        (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? 'Not watered' :
+        (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? '-' :
           (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
             (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en')) === (formatDate(yesterday, 'yyyy/MM/dd', 'en')) ? 'Yesterday' :
               (formatDate(gardenService.getCellOnPosition(garden, column, row).fertilizedDate, 'yyyy/MM/dd', 'en'))
