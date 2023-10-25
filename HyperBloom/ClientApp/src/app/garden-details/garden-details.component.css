@@ -1,15 +1,20 @@
 .cell {
   background: radial-gradient(#6E4427, #85512B, #A16840, #8E5E3A);
   border: 1px solid black;
-  height: 100px;
-  max-height: 100px;
-  width: 100px;
+  height: 125px;
+  max-height: 125px;
+  width: 125px;
   display: inline-flex;
   flex-direction: column
 }
 
+.button {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
 .rows {
-  max-height: 100px;
+  max-height: 125px;
 }
 
 .cell:hover {
@@ -30,6 +35,7 @@
   margin: 20px auto 22px;
   z-index: 10;
   display: inline-flex;
+  text-shadow: 1px 0 5px black, 0 0 1em black, 0 0 0.2em black;
 }
 
 .seeds {

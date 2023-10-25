@@ -1,0 +1,7 @@
+input {
+  width: 175px;
+}
+
+#rows, #columns {
+  width: 75px;
+}

@@ -14,14 +14,14 @@
     <label for="columns">
       Columns
     </label>
-    <input placeholder="You garden's columns" [(ngModel)]="columns" id="columns" type="number" max="10" formControlName="columns">
+    <input [(ngModel)]="columns" id="columns" type="number" min="1" max="10" formControlName="columns">
   </div>
 
   <div>
     <label for="rows">
       Rows
     </label>
-    <input placeholder="You garden's rows" [(ngModel)]="rows" id="rows" type="number" max="10" formControlName="rows">
+    <input [(ngModel)]="rows" id="rows" type="number" min="1" max="10" formControlName="rows">
   </div>
 
   <button class="button" type="submit">Add Garden</button>
