@@ -59,7 +59,9 @@ For the database:
 
 ### Prerequisites
 
-1. First, you will need Node Package Manager to run the application.
+1. First, you will need Node.js and Node Package Manager to run the application.
+You can install Node.js from the site *https://nodejs.org/en/download/* (the installer includes NPM).
+If you already have Node.js but not NPM, you can install NPM from the terminal:
 * npm
   ```sh
   npm install npm@latest -g
