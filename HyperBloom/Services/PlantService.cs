@@ -100,9 +100,9 @@ public class PlantService : IPlantService
 
     public static void UpdateObjProperties<T>(T objToUpdate, T updatedProps)
     {
-        PropertyInfo[] plantProperties = objToUpdate.GetType().GetProperties();
+        PropertyInfo[] objProperties = objToUpdate.GetType().GetProperties();
 
-        foreach (PropertyInfo prop in plantProperties)
+        foreach (PropertyInfo prop in objProperties)
         {
             if (prop.CanWrite &&
                 !prop.Name.Equals("WateredDate") &&
