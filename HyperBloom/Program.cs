@@ -29,10 +29,12 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<INeedsRepository<Needs>, NeedsRepository>();
+builder.Services.AddSingleton<IUnitRepository<Unit>, UnitRepository>();
 builder.Services.AddTransient<INeedsService, NeedsService>();
 builder.Services.AddTransient<IPlantService, PlantService>();
 builder.Services.AddTransient<IGardenService, GardenService>();
 builder.Services.AddTransient<ISeedService, SeedService>();
+builder.Services.AddTransient<IUnitService, UnitService>();
 
 builder.Services.AddHttpLogging(httpLogging =>
 {
