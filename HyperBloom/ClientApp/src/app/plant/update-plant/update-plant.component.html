@@ -47,6 +47,36 @@
   </div>
 
   <div>
+    <label for="expectedHarvestAmount">
+      Harvest Amount
+    </label>
+    <input placeholder="Expected" [(ngModel)]="expectedHarvestAmount" id="expectedHarvestAmount" type="number" min="0" formControlName="expectedHarvestAmount">
+    <input placeholder="Actual" [(ngModel)]="actualHarvestAmount" id="actualHarvestAmount" type="number" min="0" formControlName="actualHarvestAmount">
+    <select [(ngModel)]="harvestUnit" id="harvestUnit" formControlName="harvestUnit">
+      <option hidden="hidden" value="">unit</option>
+      <option *ngFor="let unit of harvestUnits" [ngValue]="unit.name
+">
+        {{unit.name}}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="temperature">
+      Temperature
+    </label>
+    <input [(ngModel)]="lowerTemp" id="lowerTemp" type="number" formControlName="lowerTemp">
+    <input [(ngModel)]="higherTemp" id="higherTemp" type="number" formControlName="higherTemp">
+    <select [(ngModel)]="tempUnit" id="temperature" formControlName="tempUnit">
+      <option hidden="hidden" value="">unit</option>
+      <option *ngFor="let unit of tempUnits" [ngValue]="unit.name
+">
+        {{unit.name}}
+      </option>
+    </select>
+  </div>
+
+  <div>
     <label for="color">
       Color
     </label>
