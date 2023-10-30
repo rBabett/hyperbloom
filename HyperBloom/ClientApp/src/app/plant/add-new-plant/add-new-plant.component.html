@@ -47,6 +47,36 @@
     </select>
   </div>
 
+
+  <div>
+    <label for="expectedHarvestAmount">
+      Expected Harvest Amount
+    </label>
+    <input id="expectedHarvestAmount" type="number" min="0" formControlName="expectedHarvestAmount">
+    <select id="harvestUnit" formControlName="harvestUnit">
+      <option hidden="hidden" value="">unit</option>
+      <option *ngFor="let unit of harvestUnits" [ngValue]="unit.name
+">
+        {{unit.name}}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="temperature">
+      Temperature
+    </label>
+    <input id="lowerTemp" type="number" formControlName="lowerTemp">
+    <input id="higherTemp" type="number" formControlName="higherTemp">
+    <select id="temperature" formControlName="tempUnit">
+      <option hidden="hidden" value="">unit</option>
+      <option *ngFor="let unit of tempUnits" [ngValue]="unit.name
+">
+        {{unit.name}}
+      </option>
+    </select>
+  </div>
+
   <div>
     <label for="color">
       Color

@@ -2,10 +2,9 @@ import {Component, Inject, OnInit} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
-import { Plant } from "../my-plants/my-plants.component";
-import { Needs } from "../my-plants/my-plants.component";
-import {PlantService} from "../plant.service";
-import {getBaseUrl} from "../../main";
+import {Needs, Unit} from "../my-plants/my-plants.component";
+import {PlantService} from "../../services/plant.service";
+import {getBaseUrl} from "../../../main";
 
 @Component({
   selector: 'app-add-new-plant',
@@ -16,6 +15,8 @@ export class AddNewPlantComponent implements OnInit{
   public soilNeeds: Needs[] = [];
   public waterNeeds: Needs[] = [];
   public lightNeeds: Needs[] = [];
+  public harvestUnits: Unit[] = [];
+  public tempUnits: Unit[] = [];
 
   private http: HttpClient;
   private baseUrl: string;
@@ -27,6 +28,12 @@ export class AddNewPlantComponent implements OnInit{
     waterNeeds: '',
     soilNeeds: '',
     color: '',
+    expectedHarvestAmount: 0,
+    actualHarvestAmount: 0,
+    lowerTemp: 0,
+    higherTemp: 0,
+    tempUnit: '',
+    harvestUnit: '',
   });
 
   constructor(http: HttpClient,
@@ -41,6 +48,22 @@ export class AddNewPlantComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.GetNeeds();
+    this.GetUnits();
+    this.GetTempUnits();
+  }
+
+  private GetUnits() {
+    this.http.get<Unit[]>(getBaseUrl() + 'api/units').subscribe(result => {
+      this.harvestUnits = result;
+    }, error => console.error(error));
+  }
+  private GetTempUnits() {
+    this.http.get<Unit[]>(getBaseUrl() + 'api/units/temp').subscribe(result => {
+      this.tempUnits = result;
+    }, error => console.error(error));
+  }
+  private GetNeeds() {
     this.http.get<Needs[]>(getBaseUrl() + 'api/needs').subscribe(result => {
       this.needs = result;
       this.soilNeeds = this.needs.filter(need => need.type == 0);
@@ -57,6 +80,11 @@ export class AddNewPlantComponent implements OnInit{
       WaterNeeds: this.newPlantForm.get('waterNeeds')?.value,
       SoilNeeds: this.newPlantForm.get('soilNeeds')?.value,
       Color: this.newPlantForm.get('color')?.value,
+      ExpectedHarvestAmount: this.newPlantForm.get('expectedHarvestAmount')?.value,
+      LowerTemp: this.newPlantForm.get('lowerTemp')?.value,
+      HigherTemp: this.newPlantForm.get('higherTemp')?.value,
+      HarvestUnit: this.newPlantForm.get('harvestUnit')?.value,
+      TempUnit: this.newPlantForm.get('tempUnit')?.value,
     };
     this.plantService.addNewPlant(formData);
   }
