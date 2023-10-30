@@ -17,6 +17,7 @@ public class UnitRepository : IUnitRepository<Unit>
     {
         _units = new HashSet<Unit>()
         { 
+            new Unit(0, "unit"),
             new Unit(1, "g"),
             new Unit(2, "kg"),
             new Unit(3, "ton"),
