@@ -2,9 +2,8 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {Needs, Plant} from "./my-plants/my-plants.component";
-import {getBaseUrl} from "../main";
-import {Seed} from "./my-gardens/my-gardens.component";
+import {getBaseUrl} from "../../main";
+import {Seed} from "../garden/my-gardens/my-gardens.component";
 
 @Injectable({
   providedIn: 'root'

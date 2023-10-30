@@ -1,11 +1,11 @@
 import {Inject, Injectable} from '@angular/core';
-import { Plant } from './my-plants/my-plants.component';
+import { Plant } from '../plant/my-plants/my-plants.component';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {getBaseUrl} from "../main";
+import {getBaseUrl} from "../../main";
 import {Router} from "@angular/router";
-import { Needs } from "./my-plants/my-plants.component";
-import {Seed} from "./my-gardens/my-gardens.component";
+import { Needs } from "../plant/my-plants/my-plants.component";
+import {Seed} from "../garden/my-gardens/my-gardens.component";
 @Injectable({
   providedIn: 'root'
 })
@@ -67,7 +67,12 @@ export class PlantService {
     Color: string | null | undefined;
     SoilNeeds: string | null | undefined;
     LightNeeds: string | null | undefined;
-    Name: string | null | undefined
+    Name: string | null | undefined;
+    ExpectedHarvestAmount: number | null | undefined,
+    LowerTemp: number | null | undefined,
+    HigherTemp: number | null | undefined,
+    HarvestUnit: string | null | undefined,
+    TempUnit: string | null | undefined,
   }) {
     this.Http.post<Plant>(getBaseUrl() + 'api/plants/add-new-plant', formData).subscribe(
       (data) => {

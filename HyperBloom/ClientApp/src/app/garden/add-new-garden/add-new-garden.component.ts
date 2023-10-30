@@ -1,10 +1,8 @@
 import {Component, Inject} from '@angular/core';
-import {Cell} from "../my-gardens/my-gardens.component";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
-import {GardenService} from "../garden.service";
-import {Plant} from "../my-plants/my-plants.component";
+import {GardenService} from "../../services/garden.service";
 
 @Component({
   selector: 'app-add-new-garden',

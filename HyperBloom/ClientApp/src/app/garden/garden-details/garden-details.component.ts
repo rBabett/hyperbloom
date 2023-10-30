@@ -2,13 +2,12 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {GardenService} from "../garden.service";
+import {GardenService} from "../../services/garden.service";
 import {Router} from "@angular/router";
 import {Cell, Garden, MyGardensComponent, Seed} from "../my-gardens/my-gardens.component";
-import {Plant} from "../my-plants/my-plants.component";
-import {PlantService} from "../plant.service";
+import {PlantService} from "../../services/plant.service";
 import {formatDate} from "@angular/common";
-import {SeedService} from "../seed.service";
+import {SeedService} from "../../services/seed.service";
 
 
 @Component({

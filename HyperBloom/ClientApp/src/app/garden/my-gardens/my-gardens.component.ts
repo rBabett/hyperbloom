@@ -1,9 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {Plant} from "../my-plants/my-plants.component";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {PlantService} from "../plant.service";
-import {GardenService} from "../garden.service";
+import {GardenService} from "../../services/garden.service";
 import {formatDate, NgIf} from "@angular/common";
 
 @Component({

@@ -2,8 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
-import {SeedService} from "../seed.service";
-import {Seed} from "../my-gardens/my-gardens.component";
+import {SeedService} from "../../services/seed.service";
+import {Seed} from "../../garden/my-gardens/my-gardens.component";
 
 @Component({
   selector: 'app-update-seed',

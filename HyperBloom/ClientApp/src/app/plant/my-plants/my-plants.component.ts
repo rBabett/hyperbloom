@@ -1,11 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {getBaseUrl} from "../../main";
 import {Router} from "@angular/router";
-import { PlantService } from "../plant.service";
+import { PlantService } from "../../services/plant.service";
 import {formatDate, NgIf} from "@angular/common";
-import {Cell} from "../my-gardens/my-gardens.component";
-import {GardenService} from "../garden.service";
+import {GardenService} from "../../services/garden.service";
 
 @Component({
   selector: 'app-my-plants',
@@ -70,9 +68,19 @@ export interface Plant {
   wateredDate: Date;
   fertilizedDate: Date;
   color: string;
+  expectedHarvestAmount: number;
+  actualHarvestAmount: number;
+  lowerTemp: number;
+  higherTemp: number;
+  tempUnit: string;
+  harvestUnit: string;
 }
 
 export interface Needs {
   name: string;
   type: number;
+}
+
+export interface Unit {
+  name: string;
 }

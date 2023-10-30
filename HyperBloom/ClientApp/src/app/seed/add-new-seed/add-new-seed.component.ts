@@ -2,9 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
-import {Needs, Plant} from "../my-plants/my-plants.component";
-import {Seed} from "../my-gardens/my-gardens.component";
-import {SeedService} from "../seed.service";
+import {SeedService} from "../../services/seed.service";
 
 @Component({
   selector: 'app-add-new-seed',

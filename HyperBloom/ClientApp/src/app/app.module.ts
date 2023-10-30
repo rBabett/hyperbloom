@@ -7,16 +7,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { MyPlantsComponent } from './my-plants/my-plants.component';
-import { AddNewPlantComponent } from "./add-new-plant/add-new-plant.component";
-import { UpdatePlantComponent } from "./update-plant/update-plant.component";
-import { MyGardensComponent } from "./my-gardens/my-gardens.component";
-import {UpdateGardenComponent} from "./update-garden/update-garden.component";
-import {AddNewGardenComponent} from "./add-new-garden/add-new-garden.component";
-import {GardenDetailsComponent} from "./garden-details/garden-details.component";
-import {MySeedsComponent} from "./my-seeds/my-seeds.component";
-import {UpdateSeedComponent} from "./update-seed/update-seed.component";
-import {AddNewSeedComponent} from "./add-new-seed/add-new-seed.component";
+import { MyPlantsComponent } from './plant/my-plants/my-plants.component';
+import { AddNewPlantComponent } from "./plant/add-new-plant/add-new-plant.component";
+import { UpdatePlantComponent } from "./plant/update-plant/update-plant.component";
+import { MyGardensComponent } from "./garden/my-gardens/my-gardens.component";
+import {UpdateGardenComponent} from "./garden/update-garden/update-garden.component";
+import {AddNewGardenComponent} from "./garden/add-new-garden/add-new-garden.component";
+import {GardenDetailsComponent} from "./garden/garden-details/garden-details.component";
+import {MySeedsComponent} from "./seed/my-seeds/my-seeds.component";
+import {UpdateSeedComponent} from "./seed/update-seed/update-seed.component";
+import {AddNewSeedComponent} from "./seed/add-new-seed/add-new-seed.component";
 
 @NgModule({
   declarations: [

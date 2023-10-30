@@ -1,10 +1,8 @@
 import {Component, Inject} from '@angular/core';
-import {Plant} from "../my-plants/my-plants.component";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
-import {PlantService} from "../plant.service";
-import {GardenService} from "../garden.service";
+import {GardenService} from "../../services/garden.service";
 import {Cell} from "../my-gardens/my-gardens.component";
 
 @Component({

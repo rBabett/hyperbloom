@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Seed} from "../my-gardens/my-gardens.component";
-import {SeedService} from "../seed.service";
+import {Seed} from "../../garden/my-gardens/my-gardens.component";
+import {SeedService} from "../../services/seed.service";
 
 @Component({
   selector: 'app-my-seeds',
