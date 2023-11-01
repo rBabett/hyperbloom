@@ -30,12 +30,16 @@
   border: 1px solid #80ff40;
 }
 
-.plant-name, .plant-water-head, .plant-light-head, .plant-soil-head, .plant-light, .plant-water, .plant-soil {
+.plant-name, .plant-water-head, .plant-light-head, .plant-soil-head, .plant-light, .plant-water, .plant-soil, .plant-temperature, .plant-harvest {
   text-align: center;
 }
 
-.plant-name, .plant-light, .plant-water, .plant-soil {
+.plant-name, .plant-light, .plant-water, .plant-soil, .plant-temperature {
   padding-top: 24px;
+}
+
+.plant-harvest {
+  padding-top: 12px;
 }
 
 .plant-water-date, .plant-fertilize-date {
@@ -45,6 +49,15 @@
 .add-new-btn {
   margin-top: 10px !important;
   margin-bottom: 30px !important;
+}
+
+.plant-harvest-amount {
+  margin: 0;
+}
+
+.plant-harvest-full {
+  font-size: small;
+  margin: 0;
 }
 
 tbody, td, tfoot, th, thead, tr {
