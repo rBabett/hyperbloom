@@ -8,6 +8,8 @@
       <th class="plant-light-head">Light Needs</th>
       <th class="plant-water-head">Water Needs</th>
       <th class="plant-soil-head">Soil Needs</th>
+      <th class="plant-soil-head">Temperature</th>
+      <th class="plant-soil-head">Harvest</th>
       <th class="plant-water-date-head">Last watered</th>
       <th class="plant-fertilize-date-head">Last fertilized</th>
       <th></th>
@@ -20,6 +22,18 @@
       <td class="plant-light">{{ plant.lightNeeds }}</td>
       <td class="plant-water">{{ plant.waterNeeds }}</td>
       <td class="plant-soil">{{ plant.soilNeeds }}</td>
+      <td class="plant-temperature">{{plant.lowerTemp}} ─ {{plant.higherTemp}}{{plant.tempUnit}}</td>
+      <td class="plant-harvest">
+        <p class="plant-harvest-amount" [ngStyle]="{'color': (plant.actualHarvestAmount > plant.expectedHarvestAmount) ? '#228B22' :
+        (plant.actualHarvestAmount == plant.expectedHarvestAmount) ? 'grey' : 'red'}">
+          {{(plant.actualHarvestAmount > plant.expectedHarvestAmount) ? '▲ ' :
+          (plant.actualHarvestAmount == plant.expectedHarvestAmount) ? '■ ' : '▼ ' }}
+          {{plant.actualHarvestAmount}}
+        </p>
+        <p class="plant-harvest-full">
+          ({{plant.actualHarvestAmount}}/{{plant.expectedHarvestAmount}}{{(plant.harvestUnit) ? ' ' + plant.harvestUnit : ''}})
+        </p>
+      </td>
       <td class="plant-water-date">{{ (plant.waterNeeds != 'Aquatic') ?
         (formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en')) === '0001/01/01' ? '-' :
         (formatDate(plant.wateredDate, 'yyyy/MM/dd', 'en')) === (formatDate(today, 'yyyy/MM/dd', 'en')) ? 'Today' :
