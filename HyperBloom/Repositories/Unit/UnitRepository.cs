@@ -31,9 +31,10 @@ public class UnitRepository : IUnitRepository<Unit>
             new Unit(11, "pieces"),
             new Unit(12, "flowers"),
             new Unit(13, "tubers"),
-            new Unit(14, "plants"),
-            new Unit(15, "seeds"),
-            new Unit(16, "fruits"),
+            new Unit(14, "leaves"),
+            new Unit(15, "plants"),
+            new Unit(16, "seeds"),
+            new Unit(17, "fruits"),
             
         };
     }
