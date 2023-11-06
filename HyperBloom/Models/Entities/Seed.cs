@@ -17,8 +17,8 @@ public class Seed
     public string LightNeeds { get; set; }
     public string WaterNeeds { get; set; }
     public string SoilNeeds { get; set; }
-    public double ExpectedHarvestAmount { get; set; }
-    public double ActualHarvestAmount { get; set; }
+    public int ExpectedHarvestAmount { get; set; }
+    public int ActualHarvestAmount { get; set; }
     public int LowerTemp { get; set; }
     public int HigherTemp { get; set; }
     public string TempUnit { get; set; }
