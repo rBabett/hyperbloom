@@ -45,7 +45,7 @@ export class GardenDetailsComponent implements OnInit{
               private route: ActivatedRoute,
               public gardenService: GardenService,
               private seedService: SeedService,
-              private plantService: PlantService) {
+              public plantService: PlantService) {
     this.http = http;
     this.baseUrl = baseUrl;
     this.router = Router;
