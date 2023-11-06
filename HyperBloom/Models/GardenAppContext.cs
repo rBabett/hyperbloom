@@ -27,8 +27,6 @@ public class GardenAppContext : DbContext
             .Property(p => p.PlantId)
             .ValueGeneratedOnAdd()
             .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
-        
-        modelBuilder.Entity<Plant>().HasIndex(u => u.Name).IsUnique();
     }
 
 }
