@@ -27,7 +27,8 @@
         <p class="plant-harvest-amount" [ngStyle]="{'color': (plant.actualHarvestAmount > plant.expectedHarvestAmount) ? '#228B22' :
         (plant.actualHarvestAmount == plant.expectedHarvestAmount) ? 'grey' : 'red'}">
           {{(plant.actualHarvestAmount > plant.expectedHarvestAmount) ? '▲ ' :
-          (plant.actualHarvestAmount == plant.expectedHarvestAmount) ? '■ ' : '▼ ' }}
+          (plant.actualHarvestAmount == 0) ? ' ' :
+          (plant.actualHarvestAmount == plant.expectedHarvestAmount) ? '✔ ' : '▼ ' }}
           {{plant.actualHarvestAmount}}
         </p>
         <p class="plant-harvest-full">
