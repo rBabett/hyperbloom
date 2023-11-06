@@ -24,8 +24,8 @@
       <td class="plant-soil">{{ plant.soilNeeds }}</td>
       <td class="plant-temperature">{{plant.lowerTemp}} ─ {{plant.higherTemp}}{{plant.tempUnit}}</td>
       <td class="plant-harvest">
-        <p class="plant-harvest-amount" [ngStyle]="{'color': (plant.actualHarvestAmount > plant.expectedHarvestAmount) ? '#228B22' :
-        (plant.actualHarvestAmount == plant.expectedHarvestAmount) ? 'grey' : 'red'}">
+        <p class="plant-harvest-amount" [ngStyle]="{'color': (plant.actualHarvestAmount >= plant.expectedHarvestAmount) ? '#228B22' :
+        (plant.actualHarvestAmount == 0) ? 'grey' : 'red'}">
           {{plantService.DecideHarvestSymbol(plant.actualHarvestAmount, plant.expectedHarvestAmount)}}
           {{plant.actualHarvestAmount}}
         </p>
