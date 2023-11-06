@@ -1,0 +1,71 @@
+.plant-water-btn {
+  background: linear-gradient(120deg, #F5FEFD, #CAE9FE, #A8ECEC, #5BDCE1);
+  width: 50px;
+  height: 50px;
+  font-size: 13px;
+  padding: 8px 20px 8px 8px;
+  border-radius: 0 50% 50% 50%;
+  border: 1px solid #A8ECEC;
+  transform: rotate(45deg);
+}
+
+.plant-water-btn:hover {
+  background: linear-gradient(120deg, #CAE9FE, #A8ECEC, #5BDCE1, #48B1DA);
+  border: 1px solid #5BDCE1;
+}
+
+.plant-fertilize-btn {
+  background: linear-gradient(120deg, #FBF3A2, #deff82, #b6ff57, #80ff40);
+  width: 50px;
+  height: 50px;
+  font-size: 13px;
+  padding: 10px;
+  border-radius: 0 50% 50% 50%;
+  border: 1px solid #b6ff57;
+  transform: rotate(45deg);
+ }
+
+.plant-fertilize-btn:hover {
+  background: linear-gradient(120deg, #d7ff69, #a5fc53, #67db2c, #47ad13);
+  border: 1px solid #80ff40;
+}
+
+.plant-name, .plant-water-head, .plant-light-head, .plant-soil-head, .plant-light, .plant-water, .plant-soil, .plant-temperature, .plant-harvest {
+  text-align: center;
+}
+
+.plant-name, .plant-light, .plant-water, .plant-soil, .plant-temperature {
+  padding-top: 24px;
+}
+
+.plant-harvest {
+  padding-top: 12px;
+}
+
+.plant-water-date, .plant-fertilize-date {
+  padding-top: 13px;
+}
+
+.add-new-btn {
+  margin-top: 10px !important;
+  margin-bottom: 30px !important;
+}
+
+.plant-harvest-amount {
+  margin: 0;
+}
+
+.plant-harvest-full {
+  font-size: small;
+  margin: 0;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: hidden;
+  border-width: 0;
+}
+
+.plant-update, .plant-delete {
+  margin-top: 15px;
+}

@@ -14,6 +14,7 @@ public class GardenAppContext : DbContext
     }
     
     public DbSet<Needs> Needs { get; set; }
+    public DbSet<Unit> Units { get; set; }
     public DbSet<Plant> Plants { get; set; }
     public DbSet<Seed> Seeds { get; set; }
 
@@ -26,8 +27,6 @@ public class GardenAppContext : DbContext
             .Property(p => p.PlantId)
             .ValueGeneratedOnAdd()
             .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
-        
-        modelBuilder.Entity<Plant>().HasIndex(u => u.Name).IsUnique();
     }
 
 }
