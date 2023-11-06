@@ -33,7 +33,7 @@
 
 ## About The Project
 
-Hyper Bloom is a web application that aims to help newbies, hobbyists and professional gardeners alike in visualizing their plants' needs and keep track of watering and fertilization dates. Using built-in types for light, water and soil needs, Hyper Bloom urges its users to learn more about their plants. <br>
+Hyper Bloom is a web application that aims to help newbies, hobbyists and professional gardeners alike in visualizing their plants' needs and keep track of watering and fertilization dates. Using built-in types for light, water and soil needs, Hyper Bloom urges its users to learn more about their plants, to which the users can also add the plants' preferred temperature range in their preferred unit. It is also possible to keep track of a plant's growth or harvest.<br>
 For future features, see the <a href="#roadmap">roadmap</a>!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -100,11 +100,28 @@ After this, you will be ready to run the application!
 ## Usage
 
 Hyper Bloom is still in early stages and under constant development. <br>
-This colorful table helps you visualize your plants' needs. In the future, this part will look much better - until then, it's an early sneak-peek of what you can expect.:) <br>
 
+With the help of a colorful table, you can easily keep track of your plants' needs, harvest amount, and watering and fertilization dates.
 <details>
-<img src="https://github.com/rBabett/hyperbloom/assets/113454591/8ef8c3fc-5445-4af0-afb2-2bfb13dcef6f">
+<img src="https://github.com/rBabett/hyperbloom/assets/113454591/bceb72c2-6fa4-49b5-953b-c3ceb62d658c">
 </details>
+
+You can add various seeds to your collection, which you can plant in your gardens!
+<details>
+<img src="https://github.com/rBabett/hyperbloom/assets/113454591/a69e3d93-b5db-416b-8975-f92c093fe1f1">
+</details>
+
+In the list of your gardens, you can see a simplified version of each of your gardens. Each colorful initial represents the seed planted in the specific cell.
+<details>
+<img src="https://github.com/rBabett/hyperbloom/assets/113454591/cab1b8a6-8160-43ac-9727-c8c98a16cd1b">
+</details>
+
+In the detailed view of the garden, you can plant seeds and see the full name of everything you've planted. This is also where you can water and fertilze each cell of a garden.
+<details>
+<img src="https://github.com/rBabett/hyperbloom/assets/113454591/fba1220e-83dd-48e4-a5f0-28587270c66a">
+</details>
+
+
 
 <img src="https://github.com/rBabett/hyperbloom/assets/113454591/d0164a49-36f2-4c45-8ed7-ad62696df50d" width="120" height="120"/>
 
@@ -117,9 +134,10 @@ This colorful table helps you visualize your plants' needs. In the future, this 
 - [X] Sizeable garden grid
   - [X] Plantable seeds
   - [X] Watering/fertilizing plants straight from the garden
-- [ ] Estimated vs actual harvest visualization
-  - [ ] Harvest visualization in plants table
-  - [ ] Harvest visualization in garden
+- [X] Estimated vs actual harvest visualization
+  - [X] Harvest visualization in plants table
+  - [ ] Harvest visualization in seeds table
+- [ ] Add more info to seeds
 - [ ] Nicer CSS
   - [ ] Hand-drawn icons
 
