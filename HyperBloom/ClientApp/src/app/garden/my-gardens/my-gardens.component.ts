@@ -78,5 +78,14 @@ export interface Cell {
 export interface Seed {
   seedId: number;
   name: string;
+  lightNeeds: string;
+  waterNeeds: string;
+  soilNeeds: string;
   color: string;
+  expectedHarvestAmount: number;
+  actualHarvestAmount: number;
+  lowerTemp: number;
+  higherTemp: number;
+  tempUnit: string;
+  harvestUnit: string;
 }
