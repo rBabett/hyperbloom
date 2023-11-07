@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Seed} from "../../garden/my-gardens/my-gardens.component";
 import {SeedService} from "../../services/seed.service";
+import {PlantService} from "../../services/plant.service";
 
 @Component({
   selector: 'app-my-seeds',
@@ -17,7 +18,8 @@ export class MySeedsComponent implements OnInit {
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private Router: Router,
-              private seedService: SeedService) {
+              private seedService: SeedService,
+              public plantService: PlantService) {
     this.http = http;
     this.router = Router;
   }

@@ -45,7 +45,7 @@ export class GardenDetailsComponent implements OnInit{
               private route: ActivatedRoute,
               public gardenService: GardenService,
               private seedService: SeedService,
-              private plantService: PlantService) {
+              public plantService: PlantService) {
     this.http = http;
     this.baseUrl = baseUrl;
     this.router = Router;
@@ -94,7 +94,9 @@ export class GardenDetailsComponent implements OnInit{
   }
 
   sowSeed(cell: any, plant: any): void {
-    cell.plant = plant;
+    if (plant != null) {
+      cell.plant = plant;
+    }
   }
   waterCell(cell: Cell, gardenId: number): void {
     this.gardenService.waterCell(cell.cellId, gardenId);
@@ -121,7 +123,16 @@ export class GardenDetailsComponent implements OnInit{
           Plant: {
             SeedId: cell.plant?.seedId,
             Name: cell.plant?.name,
-            Color: cell.plant?.color
+            Color: cell.plant?.color,
+            LightNeeds: cell.plant?.lightNeeds,
+            WaterNeeds: cell.plant?.waterNeeds,
+            SoilNeeds: cell.plant?.soilNeeds,
+            ExpectedHarvestAmount: cell.plant?.expectedHarvestAmount,
+            ActualHarvestAmount: cell.plant?.actualHarvestAmount,
+            LowerTemp: cell.plant?.lowerTemp,
+            HigherTemp: cell.plant?.higherTemp,
+            TempUnit: cell.plant?.tempUnit,
+            HarvestUnit: cell.plant?.harvestUnit,
           }
         }
         cellsData.push(formData);

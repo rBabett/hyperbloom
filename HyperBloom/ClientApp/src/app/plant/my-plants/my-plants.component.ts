@@ -15,14 +15,11 @@ export class MyPlantsComponent implements OnInit {
   private http: HttpClient;
   private router: Router;
 
-  public today: Date = new Date();
-  public yesterday = new Date();
-
 
   constructor(http: HttpClient,
               @Inject('BASE_URL') baseUrl: string,
               private Router: Router,
-              private plantService: PlantService,
+              public plantService: PlantService,
               private gardenService: GardenService) {
     this.http = http;
     this.router = Router;
@@ -30,7 +27,6 @@ export class MyPlantsComponent implements OnInit {
 
   ngOnInit() {
     this.GetPlants()
-    this.yesterday.setDate(this.yesterday.getDate() - 1);
   }
   private GetPlants() {
     this.plantService.getPlants().subscribe(res => {
