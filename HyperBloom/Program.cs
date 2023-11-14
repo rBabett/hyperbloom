@@ -35,6 +35,7 @@ builder.Services.AddTransient<IPlantService, PlantService>();
 builder.Services.AddTransient<IGardenService, GardenService>();
 builder.Services.AddTransient<ISeedService, SeedService>();
 builder.Services.AddTransient<IUnitService, UnitService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddHttpLogging(httpLogging =>
 {
@@ -47,7 +48,7 @@ builder.Services.Configure<FormOptions>(o => {
     o.MemoryBufferThreshold = int.MaxValue;  
 });
 
-/*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -63,13 +64,13 @@ builder.Services.Configure<FormOptions>(o => {
 
         options.Events = new JwtBearerEvents()
         {
-            OnMessageReceived = contex =>
+            OnMessageReceived = context =>
             {
-                contex.Token = contex.Request.Cookies["token"];
+                context.Token = context.Request.Cookies["token"];
                 return Task.CompletedTask;
             } 
-        };
-    });*/
+        }; 
+    });
 
 builder.Services.AddMvc();
 builder.Services.AddControllers();
@@ -83,11 +84,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+app.UseAuthentication();
+
 app.UseStaticFiles();
 app.UseCors();
 app.UseRouting();
 
+app.UseHttpLogging();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
