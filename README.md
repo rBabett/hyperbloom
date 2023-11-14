@@ -136,8 +136,12 @@ In the detailed view of the garden, you can plant seeds and see the full name of
   - [X] Watering/fertilizing plants straight from the garden
 - [X] Estimated vs actual harvest visualization
   - [X] Harvest visualization in plants table
-  - [ ] Harvest visualization in seeds table
-- [ ] Add more info to seeds
+  - [X] Harvest visualization in seeds table
+- [X] Add more info to seeds
+- [ ] Add users
+  - [ ] Add login/signup page
+  - [ ] Tie plants/seeds/gardens to users
+  - [ ] Add profile page
 - [ ] Nicer CSS
   - [ ] Hand-drawn icons
 
