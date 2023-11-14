@@ -21,6 +21,8 @@ public class GardenAppContext : DbContext
     public DbSet<Garden> Gardens { get; set; }
     
     public DbSet<Cell> Cells { get; set; }
+    
+    public DbSet<User> Users { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Plant>()
