@@ -1,0 +1,44 @@
+<h1 id="tableLabel">My seeds</h1>
+<p *ngIf="!seeds?.length"><em>Loading...</em></p>
+
+<table id="seed-table" class='table' aria-labelledby="tableLabel" *ngIf="seeds.length">
+  <thead>
+  <tr>
+    <th class="seed-name-head">Name</th>
+    <th class="plant-light-head">Light Needs</th>
+    <th class="plant-water-head">Water Needs</th>
+    <th class="plant-soil-head">Soil Needs</th>
+    <th class="plant-soil-head">Temperature</th>
+    <th class="plant-soil-head">Harvest</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody id="seed-table-body">
+  <tr class="seed-row" [bgColor]="seed.color" *ngFor="let seed of seeds">
+    <td class="seed-name">{{ seed.name }}</td>
+    <td class="plant-light">{{ seed.lightNeeds }}</td>
+    <td class="plant-water">{{ seed.waterNeeds }}</td>
+    <td class="plant-soil">{{ seed.soilNeeds }}</td>
+    <td class="plant-temperature">{{seed.lowerTemp}} ─ {{seed.higherTemp}}{{seed.tempUnit}}</td>
+    <td class="plant-harvest">
+      <p class="plant-harvest-amount" [ngStyle]="{'color': (seed.actualHarvestAmount >= seed.expectedHarvestAmount) ? '#228B22' :
+        (seed.actualHarvestAmount == 0) ? 'grey' : 'red'}">
+        {{plantService.DecideHarvestSymbol(seed.actualHarvestAmount, seed.expectedHarvestAmount)}}
+        {{seed.actualHarvestAmount}}
+      </p>
+      <p class="plant-harvest-full">
+        ({{seed.actualHarvestAmount}}/{{seed.expectedHarvestAmount}}{{(seed.harvestUnit) ? ' ' + seed.harvestUnit : ''}})
+      </p>
+    </td>
+    <td>
+      <button class="seed-update" (click)="UpdateSeed(seed.seedId)">Update</button>
+    </td>
+    <td>
+      <button class="seed-delete" (click)="DeleteSeed(seed.seedId)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="add-new-btn" [routerLink]="['/add-new-seed']">Add New Seed</button>
