@@ -116,7 +116,7 @@ public class UserController : ControllerBase
         return Ok();
     }
 
-    [Authorize(Roles = "User")]
+    [AllowAnonymous]
     [HttpGet("current_user")]
     public IActionResult GetCurrentUser()
     {
