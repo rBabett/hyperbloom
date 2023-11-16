@@ -17,6 +17,7 @@ import {GardenDetailsComponent} from "./garden/garden-details/garden-details.com
 import {MySeedsComponent} from "./seed/my-seeds/my-seeds.component";
 import {UpdateSeedComponent} from "./seed/update-seed/update-seed.component";
 import {AddNewSeedComponent} from "./seed/add-new-seed/add-new-seed.component";
+import {LoginPageComponent} from "./login-page/login-page.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {AddNewSeedComponent} from "./seed/add-new-seed/add-new-seed.component";
     MySeedsComponent,
     UpdateSeedComponent,
     AddNewSeedComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -50,6 +52,7 @@ import {AddNewSeedComponent} from "./seed/add-new-seed/add-new-seed.component";
       {path: 'my-seeds/:id', component: UpdateSeedComponent},
       {path: 'add-new-seed', component: AddNewSeedComponent},
       {path: 'garden-details/:id', component: GardenDetailsComponent},
+      {path: 'login', component: LoginPageComponent},
     ]),
     ReactiveFormsModule
   ],
