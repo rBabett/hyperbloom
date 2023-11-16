@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperBloom", "HyperBloom\HyperBloom.csproj", "{F71FF6FB-E085-4910-8461-E6603D324A96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperBloomTests", "HyperBloomTests\HyperBloomTests.csproj", "{C1AD1237-633D-4BC4-9A89-D6E88E6F478A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{F71FF6FB-E085-4910-8461-E6603D324A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F71FF6FB-E085-4910-8461-E6603D324A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F71FF6FB-E085-4910-8461-E6603D324A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1AD1237-633D-4BC4-9A89-D6E88E6F478A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1AD1237-633D-4BC4-9A89-D6E88E6F478A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1AD1237-633D-4BC4-9A89-D6E88E6F478A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1AD1237-633D-4BC4-9A89-D6E88E6F478A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
