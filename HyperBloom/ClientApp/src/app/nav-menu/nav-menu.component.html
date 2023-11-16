@@ -27,22 +27,27 @@
           >
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="!isLoggedIn" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/login']"
             >Login</a
             >
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link text-dark" (click)="logout()"
+            >Log out</a
+            >
+          </li>
+          <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/my-gardens']"
               >My Gardens</a
             >
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/my-plants']"
               >My Plants</a
             >
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/my-seeds']"
             >My Seeds</a
             >
