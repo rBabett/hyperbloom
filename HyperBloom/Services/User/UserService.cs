@@ -99,7 +99,7 @@ public class UserService : IUserService
             user.Badge = "Green Thumb";
         } else if (Enumerable.Range(16, 20).Contains(userPlants))
         {
-            user.Badge = "";
+            user.Badge = "Advanced Plantist";
         }
 
     }
