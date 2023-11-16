@@ -1,4 +1,5 @@
 <div [style.background-image]="backgroundImageUrl" class="login-wrap">
+  <form [formGroup]="newUserForm">
   <div class="login-html">
     <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Log In</label>
     <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Register</label>
@@ -7,15 +8,15 @@
         <br>
         <div class="group">
           <label for="user-login" class="label">Username</label>
-          <input id="user-login" type="text" class="input">
+          <input id="user-login" formControlName="username" type="text" class="input">
         </div>
         <div class="group">
           <label for="pass-login" class="label">Password</label>
-          <input id="pass-login" type="password" class="input" data-type="password">
+          <input id="pass-login" formControlName="password" type="password" class="input" data-type="password">
         </div>
         <br>
         <div class="group">
-          <input type="submit" class="button" value="Sign In">
+          <input type="submit" class="button" (click)="loginUser()" value="Log In">
         </div>
         <div class="hr"></div>
       </div>
@@ -23,26 +24,27 @@
         <br>
         <div class="group">
           <label for="user" class="label">Username</label>
-          <input id="user" type="text" class="input">
+          <input id="user" formControlName="username" type="text" class="input">
         </div>
         <div class="group">
           <label for="pass" class="label">Password</label>
-          <input id="pass" type="password" class="input" data-type="password">
+          <input id="pass" formControlName="password" type="password" class="input" data-type="password">
         </div>
         <div class="group">
           <label for="pass-repeat" class="label">Repeat Password</label>
-          <input id="pass-repeat" type="password" class="input" data-type="password">
+          <input id="pass-repeat" formControlName="passwordConfirmation" type="password" class="input" data-type="password">
         </div>
         <div class="group">
           <label for="email" class="label">Email Address</label>
-          <input id="email" type="text" class="input">
+          <input id="email" formControlName="emailAddress" type="text" class="input">
         </div>
         <br>
         <div class="group">
-          <input type="submit" class="button" value="Sign Up">
+          <input type="submit" class="button" (click)="registerUser()" value="Create New Account">
         </div>
         <div class="hr"></div>
       </div>
     </div>
   </div>
+  </form>
 </div>
