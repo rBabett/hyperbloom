@@ -13,7 +13,7 @@ export class LoginPageComponent implements OnInit{
   }
 
   setRandomBackground() {
-    const numberOfImages = 22;
+    const numberOfImages = 20;
     const randomIndex = Math.floor(Math.random() * numberOfImages) + 1;
 
     this.backgroundImageUrl = `url('/assets/${randomIndex}.png')`;
